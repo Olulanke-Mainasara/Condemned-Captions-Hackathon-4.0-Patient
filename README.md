@@ -17,8 +17,6 @@ To get started with contributing to this project, you'll need to clone the repos
 git clone git@github.com:Olulanke-Mainasara/Condemned-Captions-Hackathon-4.0-Patient.git
 ```
 
-Replace Olulanke-Mainasara with the GitHub username of the repository owner.
-
 7. Wait for the cloning process to complete.
 
 ## Install Dependencies
