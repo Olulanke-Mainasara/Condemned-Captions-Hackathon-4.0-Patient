@@ -1,38 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Condemned Captions Hackathon 4.0 Patient
 
-## Getting Started
+Welcome to the Condemned Captions Hackathon 4.0 Patient repository! This repository contains the source code for a project developed during the hackathon.
 
-First, run the development server:
+## Clone the Repository
+
+To get started with contributing to this project, you'll need to clone the repository to your local machine. To do this, follow these steps:
+
+1. Contact the repository owner and ask to be added as a collaborator.
+2. Once you've been added as a collaborator, go to the repository page on GitHub.
+3. Click the "Code" button and copy the SSH URL.
+4. Open the terminal on your local machine.
+5. Navigate to the directory where you want to clone the repository.
+6. Run the following command:
+
+```bash
+git clone git@github.com:Olulanke-Mainasara/Condemned-Captions-Hackathon-4.0-Patient.git
+```
+
+Replace Olulanke-Mainasara with the GitHub username of the repository owner.
+
+7. Wait for the cloning process to complete.
+
+## Install Dependencies
+
+Before you can run the project on your local machine, you'll need to install the dependencies. To do this, follow these steps:
+
+1. Navigate to the root directory of the project.
+2. Run the following command to install the dependencies:
+
+```bash
+npm install
+```
+
+This will install all the dependencies listed in the package.json file.
+
+## Run the Project
+
+Once you've installed the dependencies, you can run the project on your local machine. To do this, follow these steps:
+
+1. Navigate to the root directory of the project.
+2. Run the following command to start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the development server and open the project in your default web browser.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+That's it! You're now ready to start contributing to the Condemned Captions Hackathon 4.0 Patient project. If you have any questions or run into any issues, please don't hesitate to reach out to the project maintainer.
