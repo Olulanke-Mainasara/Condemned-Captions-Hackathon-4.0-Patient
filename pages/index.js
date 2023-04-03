@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
 import Splash from '@/components/Splash-Screen/Splash'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
