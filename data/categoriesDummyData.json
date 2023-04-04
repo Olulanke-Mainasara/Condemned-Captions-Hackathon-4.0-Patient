@@ -1,0 +1,104 @@
+{
+    "categories" : [
+        {
+            "id": 1,
+            "imgSrc": "/docPic3.jpg",
+            "type": "Physicians"
+        },
+        {
+            "id": 2,
+            "imgSrc": "/docPic2.jpg",
+            "type": "Audiologists"
+        },
+        {
+            "id": 3,
+            "imgSrc": "/docPic1.jpg",
+            "type": "Cardiologists"
+        },
+        {
+            "id": 4,
+            "imgSrc": "/docPic4.jpg",
+            "type": "Diabetologists"
+        },
+        {
+            "id": 5,
+            "imgSrc": "/docPic5.jpg",
+            "type": "Dietitians"
+        },
+        {
+            "id": 6,
+            "imgSrc": "/docPic6.jpg",
+            "type": "Nurses"
+        },
+        {
+            "id": 7,
+            "imgSrc": "/docPic7.jpg",
+            "type": "Orthoptists"
+        },
+        {
+            "id": 8,
+            "imgSrc": "/docPic3.jpg",
+            "type": "Pathologists"
+        },
+        {
+            "id": 9,
+            "imgSrc": "/docPic5.jpg",
+            "type": "Pharmacists"
+        },
+        {
+            "id": 10,
+            "imgSrc": "/docPic2.jpg",
+            "type": "Therapists"
+        },
+        {
+            "id": 11,
+            "imgSrc": "/docPic4.jpg",
+            "type": "Dentists"
+        },
+        {
+            "id": 12,
+            "imgSrc": "/docPic1.jpg",
+            "type": "Gynecologists"
+        },
+        {
+            "id": 13,
+            "imgSrc": "/docPic7.jpg",
+            "type": "Surgeons"
+        },
+        {
+            "id": 14,
+            "imgSrc": "/docPic6.jpg",
+            "type": "Neurologists"
+        },
+        {
+            "id": 15,
+            "imgSrc": "/docPic4.jpg",
+            "type": "Otolaryngologists"
+        },
+        {
+            "id": 16,
+            "imgSrc": "/docPic2.jpg",
+            "type": "Optometrists"
+        },
+        {
+            "id": 17,
+            "imgSrc": "/docPic6.jpg",
+            "type": "Orthopedists"
+        },
+        {
+            "id": 18,
+            "imgSrc": "/docPic5.jpg",
+            "type": "X-ray technician"
+        },
+        {
+            "id": 19,
+            "imgSrc": "/docPic1.jpg",
+            "type": "Urologists"
+        },
+        {
+            "id": 20,
+            "imgSrc": "/docPic7.jpg",
+            "type": "Hepatologist"
+        }
+    ]
+}
