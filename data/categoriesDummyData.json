@@ -2,102 +2,102 @@
     "categories" : [
         {
             "id": 1,
-            "imgSrc": "/docPic3.jpg",
+            "imgSrc": "/docPic3.svg",
             "type": "Physicians"
         },
         {
             "id": 2,
-            "imgSrc": "/docPic2.jpg",
+            "imgSrc": "/docPic2.svg",
             "type": "Audiologists"
         },
         {
             "id": 3,
-            "imgSrc": "/docPic1.jpg",
+            "imgSrc": "/docPic1.svg",
             "type": "Cardiologists"
         },
         {
             "id": 4,
-            "imgSrc": "/docPic4.jpg",
+            "imgSrc": "/docPic4.svg",
             "type": "Diabetologists"
         },
         {
             "id": 5,
-            "imgSrc": "/docPic5.jpg",
+            "imgSrc": "/docPic5.svg",
             "type": "Dietitians"
         },
         {
             "id": 6,
-            "imgSrc": "/docPic6.jpg",
+            "imgSrc": "/docPic6.svg",
             "type": "Nurses"
         },
         {
             "id": 7,
-            "imgSrc": "/docPic7.jpg",
+            "imgSrc": "/docPic7.svg",
             "type": "Orthoptists"
         },
         {
             "id": 8,
-            "imgSrc": "/docPic3.jpg",
+            "imgSrc": "/docPic3.svg",
             "type": "Pathologists"
         },
         {
             "id": 9,
-            "imgSrc": "/docPic5.jpg",
+            "imgSrc": "/docPic5.svg",
             "type": "Pharmacists"
         },
         {
             "id": 10,
-            "imgSrc": "/docPic2.jpg",
+            "imgSrc": "/docPic2.svg",
             "type": "Therapists"
         },
         {
             "id": 11,
-            "imgSrc": "/docPic4.jpg",
+            "imgSrc": "/docPic4.svg",
             "type": "Dentists"
         },
         {
             "id": 12,
-            "imgSrc": "/docPic1.jpg",
+            "imgSrc": "/docPic1.svg",
             "type": "Gynecologists"
         },
         {
             "id": 13,
-            "imgSrc": "/docPic7.jpg",
+            "imgSrc": "/docPic7.svg",
             "type": "Surgeons"
         },
         {
             "id": 14,
-            "imgSrc": "/docPic6.jpg",
+            "imgSrc": "/docPic6.svg",
             "type": "Neurologists"
         },
         {
             "id": 15,
-            "imgSrc": "/docPic4.jpg",
+            "imgSrc": "/docPic4.svg",
             "type": "Otolaryngologists"
         },
         {
             "id": 16,
-            "imgSrc": "/docPic2.jpg",
+            "imgSrc": "/docPic2.svg",
             "type": "Optometrists"
         },
         {
             "id": 17,
-            "imgSrc": "/docPic6.jpg",
+            "imgSrc": "/docPic6.svg",
             "type": "Orthopedists"
         },
         {
             "id": 18,
-            "imgSrc": "/docPic5.jpg",
+            "imgSrc": "/docPic5.svg",
             "type": "X-ray technician"
         },
         {
             "id": 19,
-            "imgSrc": "/docPic1.jpg",
+            "imgSrc": "/docPic1.svg",
             "type": "Urologists"
         },
         {
             "id": 20,
-            "imgSrc": "/docPic7.jpg",
+            "imgSrc": "/docPic7.svg",
             "type": "Hepatologist"
         }
     ]

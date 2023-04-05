@@ -1,0 +1,85 @@
+{
+    "consultations": [
+        {
+            "id": 1,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "upcoming",
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 2,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "upcoming",
+            "profilePic": "doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 3,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "upcoming",
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 4,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "upcoming",
+            "profilePic": "doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 5,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "ongoing",
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 6,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "ongoing",
+            "profilePic": "doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 7,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "completed",
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 8,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "completed",
+            "profilePic": "doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        },
+        {
+            "id": 9,
+            "dateBooked": "Monday 02 May, 2023 | 14:00PM",
+            "status": "completed",
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist",
+            "hospital": "Gao Medical Hospital"
+        }
+    ]
+}
