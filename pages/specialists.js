@@ -1,12 +1,12 @@
 import React from "react";
 import Head from "next/head";
-import specialistsDummy from "/data/specialistsDummyData.json";
+import categoriesDummy from "/data/categoriesDummyData.json";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
 function Specialists() {
-  const dummyData = specialistsDummy.specialists;
+  const dummyData = categoriesDummy.categories;
 
   return (
     <>
@@ -37,7 +37,7 @@ function Specialists() {
             <div className="grid h-full grid-cols-3 gap-3 overflow-scroll md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
               {dummyData.map((data) => {
                 return (
-                  <Link href={data.link} key={data.id}>
+                  <Link href={"#"} key={data.id}>
                     <div className="flex flex-col items-center justify-center">
                       <div className="relative w-24 h-20 max-w-full lg:w-36 lg:h-32">
                         <Image fill src={data.imgSrc} alt="docPic" />
