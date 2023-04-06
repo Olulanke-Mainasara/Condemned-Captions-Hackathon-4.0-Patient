@@ -50,7 +50,7 @@ function Consultations() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-screen bg-[#F8FFFE] flex justify-center">
-        <div className="flex flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
+        <div className="flex flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-10 xl:pt-24 overflow-hidden">
           <Nav />
 
           <h1 className="text-4xl text-center md:text-6xl text-[#1C665B]">
