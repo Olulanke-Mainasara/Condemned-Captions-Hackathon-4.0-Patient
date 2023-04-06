@@ -1,0 +1,64 @@
+{
+    "doctors": [
+        {
+            "id": 1,
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 2,
+            "profilePic": "/doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 3,
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 4,
+            "profilePic": "/doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 5,
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 6,
+            "profilePic": "/doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 7,
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 8,
+            "profilePic": "/doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 9,
+            "profilePic": "/doc1.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        },
+        {
+            "id": 10,
+            "profilePic": "/doc2.svg",
+            "name": "Dr. Sayali Olawale",
+            "type": "Cardiologist"
+        }
+    ]
+}
