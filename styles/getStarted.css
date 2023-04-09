@@ -1,0 +1,87 @@
+:root {
+  --Primary-colour-dark-shade: #1c665b;
+  --Neutral: #fcfcfc;
+  --primary-color: #2a9988;
+}
+
+.GetStarted {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.image-section {
+  width: 50%;
+  background-image: url("/loginPic.svg");
+  background-size: cover;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 23px;
+  background: rgba(252, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+}
+
+.rectangle > h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--Primary-colour-dark-shade);
+}
+
+.rectangle > label {
+  color: var(--Primary-colour-dark-shade);
+  font-weight: 400;
+}
+
+.rectangle > label > input {
+  width: 100%;
+  height: 41px;
+  border-radius: 6px;
+  background-color: #fff;
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.terms {
+  font-size: 14px;
+  text-align: center;
+  color: var(--Primary-colour-dark-shade);
+}
+
+.terms > span,
+.terms a {
+  font-weight: 700;
+}
+
+.rectangle > button {
+  width: 100%;
+  background-color: var(--Primary-colour-dark-shade);
+  border-radius: 6px;
+  height: 41px;
+  color: var(--Neutral);
+  letter-spacing: 0.5px;
+}
