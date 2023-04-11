@@ -22,7 +22,7 @@ function Specialists() {
 
           <div className="w-full px-4 md:px-0">
             <h1 className="text-4xl text-center md:text-6xl text-[#1C665B]">
-              Our Specialists
+              Specialists
             </h1>
             <form className="w-full h-10 md:h-12 mt-6 rounded-lg md:rounded-xl border border-[#83E5D7] overflow-hidden">
               <input
@@ -34,11 +34,11 @@ function Specialists() {
           </div>
 
           <div className="w-full overflow-hidden">
-            <div className="grid h-full grid-cols-3 gap-3 overflow-scroll md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
               {dummyData.map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-col items-center justify-center mb-8">
                       <div className="relative w-24 h-20 max-w-full lg:w-36 lg:h-32">
                         <Image fill src={data.imgSrc} alt="docPic" />
                       </div>
