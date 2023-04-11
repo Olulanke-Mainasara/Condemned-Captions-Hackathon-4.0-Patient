@@ -22,13 +22,13 @@ function Nav() {
     {
       id: 3,
       link: "/specialists",
-      imgSrc: "/close.svg",
+      imgSrc: "/specialists.svg",
       label: "Specialists",
     },
     {
       id: 4,
       link: "/hospitals",
-      imgSrc: "/close.svg",
+      imgSrc: "/hospitals.svg",
       label: "Hospitals",
     },
   ];
@@ -52,7 +52,7 @@ function Nav() {
                   href={link.link}
                   className="xl:duration-300 hover:opacity-50"
                 >
-                  <div className="relative w-6 aspect-square xl:hidden">
+                  <div className="relative w-5 sm:w-6 aspect-square xl:hidden">
                     <Image fill src={link.imgSrc} alt="closeMenu" />
                   </div>
 
@@ -66,7 +66,7 @@ function Nav() {
             <button
               title="Open navigation menu"
               onClick={openMenu}
-              className="relative w-6 text-lg text-white aspect-square xl:hidden"
+              className="relative w-5 text-lg text-white sm:w-6 aspect-square xl:hidden"
             >
               <Image fill src={"/open.svg"} alt="closeMenu" />
             </button>
