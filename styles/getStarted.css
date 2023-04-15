@@ -85,3 +85,15 @@ input:focus {
   color: var(--Neutral);
   letter-spacing: 0.5px;
 }
+
+.grad {
+  background: linear-gradient(
+    to right,
+    #2a9988,
+    #2a9988,
+    #2a9988,
+    #2a9988,
+    #fff,
+    #fff
+  );
+}
