@@ -112,7 +112,7 @@ function Consultations() {
                     arrayUsed.map((data) => {
                       return (
                         <div
-                          className="flex flex-col w-full bg-[#FCFCFC] rounded-lg shadow-lg mb-8"
+                          className="flex flex-col mx-auto w-[95%] bg-[#FCFCFC] rounded-lg shadow-lg mb-8"
                           key={data.id}
                         >
                           <div className="flex items-center justify-between p-4 border-b">
@@ -136,7 +136,7 @@ function Consultations() {
                               </div>
                             </div>
                             <button className="px-3 py-1 text-[#1C665B] border border-[#1C665B] rounded-lg">
-                              View info
+                              View
                             </button>
                           </div>
                         </div>

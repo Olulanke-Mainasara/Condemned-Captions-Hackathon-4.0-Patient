@@ -14,8 +14,8 @@ function SplashText() {
       <h1 className="xl:text-9xl 2xl:text-[160px] lg:text-8xl md:text-7xl text-4xl font-thin">
         NEXT<span className="font-semibold">GEN</span>
       </h1>
-      <h1 className="pt-1 md:pt-2 lg:pt-3 xl:pt-6 xl:text-8xl 2xl:text-[160px] lg:text-6xl md:text-4xl text-2xl font-thin tracking-[0.865em]">
-        DOCTORS
+      <h1 className="pt-1 md:pt-2 lg:pt-3 xl:pt-6 xl:text-8xl 2xl:text-[160px] lg:text-6xl md:text-4xl text-2xl font-thin tracking-[0.2em]">
+        DOCTORS(NG)
       </h1>
     </motion.div>
   );
