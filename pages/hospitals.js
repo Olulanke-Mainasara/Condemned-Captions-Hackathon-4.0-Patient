@@ -25,7 +25,7 @@ export default function Hospitals({ allHospitals }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col w-screen bg-[#F8FFFE]">
+      <main className="flex flex-col w-screen">
         <div className="flex mx-auto flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
           <Nav />
 
