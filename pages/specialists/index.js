@@ -16,7 +16,7 @@ function Specialists() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="w-screen bg-[#F8FFFE] flex items-center justify-center">
+      <main className="flex items-center justify-center w-screen">
         <div className="flex flex-col items-center justify-center h-screen gap-8 pt-5 pb-10 overflow-hidden xl:pt-24 xl:w-1/2">
           <Nav />
 

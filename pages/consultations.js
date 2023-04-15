@@ -49,7 +49,7 @@ function Consultations() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="w-screen bg-[#F8FFFE] flex justify-center">
+      <main className="flex justify-center w-screen">
         <div className="flex flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
           <Nav />
 
@@ -154,7 +154,7 @@ function Consultations() {
                       </div>
                       <Link
                         className="flex items-center gap-2 px-4 py-3 bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-8 right-0"
-                        href={"#"}
+                        href={"/booking"}
                       >
                         <div className="relative w-5 h-5">
                           <Image src={"/cross.svg"} fill alt="placeholderImg" />
