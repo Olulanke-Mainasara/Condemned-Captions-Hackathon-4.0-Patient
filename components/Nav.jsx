@@ -9,7 +9,7 @@ function Nav() {
   const links = [
     {
       id: 1,
-      link: "/",
+      link: "/home",
       imgSrc: "/home.svg",
       label: "Home",
     },

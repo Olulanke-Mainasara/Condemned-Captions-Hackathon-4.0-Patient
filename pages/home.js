@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Input, Card, Rate } from "antd";
+import { Input, Rate } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
@@ -28,11 +28,13 @@ const Home = () => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center w-full py-8">
-      <div className="w-full px-3 md:px-8 lg:px-12">
+    <div className="flex flex-col items-center justify-start h-full w-full py-8">
+      <div className="w-full h-full flex flex-col items-center justify-start px-3 md:px-8 lg:px-12">
         <div className="flex flex-row items-center justify-between w-full">
           <div>
-            <h1 className="text-xl font-semibold sm:text-3xl ">Hi, Anna.</h1>
+            <h1 className="text-xl font-semibold sm:text-3xl text-[#2A9988]">
+              Hi, Anna.
+            </h1>
           </div>
           <div className="flex flex-row gap-3 lg:gap-5">
             <Image
@@ -62,22 +64,15 @@ const Home = () => {
         <div className="flex flex-row items-center justify-center w-full">
           <Input
             enterButton="Search"
-            size="small"
+            size="large"
             onChange={(e) => setValue(e.currentTarget.value)}
             prefix={prefix}
             placeholder="Search for Doctors"
-            className="w-full p-0 px-4 text-xl font-semibold rounded-lg lg:w-1/2 md:w-1/2 sm:p-4 sm:px-0"
+            className="w-full p-0 px-4 text-xl border border-green-600 font-semibold rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
           />
         </div>
-        <div className="w-full block md:hidden lg:hidden relative h-[60vw]">
-          <Image
-            width={150}
-            height={250}
-            className="absolute bottom-0 right-0 z-10"
-            src="/doctor.png"
-            alt="doctor"
-          />
-          <div className="text-white w-full bg-[#2A9988] rounded-xl absolute bottom-0">
+        <div className="w-full block md:hidden lg:hidden pt-20">
+          <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
             <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
               <h1 className="text-lg font-light">
                 Learn How to Stay Healthy From these Tips!
@@ -90,47 +85,41 @@ const Home = () => {
                 Learn more
               </button>
             </div>
+            <Image
+              width={150}
+              height={250}
+              className="overflow-visible absolute bottom-0 right-0 z-10"
+              src="/doctor.png"
+              alt="doctor"
+            />
           </div>
         </div>
-        <div className="hidden md:block lg:hidden w-full relative h-[50vh]">
-          <Image
-            width={150}
-            height={250}
-            className="absolute bottom-0 right-0 z-10"
-            src="/doctor.png"
-            alt="doctor"
-          />
-          <div className="text-white w-full bg-[#2A9988] rounded-xl absolute bottom-0">
+        <div className="hidden md:block lg:hidden w-full pt-20">
+          <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
             <div className="flex flex-col items-start justify-start w-2/3 px-4 py-5">
-              <h1 className="text-lg font-semibold">
+              <h1 className="text-2xl font-semibold">
                 Learn how to stay Healthy from these tips!
               </h1>
-              <p className="text-xs font-light">
-                Eat fruits, Drink water, Excercise regularly, avoid smoking...
+              <p className="text-xl font-light">
+                Eat fruits, <br /> Drink water, <br /> Excercise regularly, and
+                avoid smoking...
               </p>
               <br />
-              <button className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]">
+              <button className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]">
                 Learn more
               </button>
             </div>
+            <Image
+              width={200}
+              height={200}
+              className="overflow-visible absolute bottom-0 right-0 z-10"
+              src="/doctor.png"
+              alt="doctor"
+            />
           </div>
         </div>
-        <div className="hidden md:hidden lg:block w-full relative h-[70vh]">
-          <Image
-            width={400}
-            height={250}
-            className="absolute bottom-0 z-20 right-52"
-            src="/doctorLg.png"
-            alt="doctor"
-          />
-          <Image
-            width={320}
-            height={250}
-            className="absolute bottom-0 right-0 z-10"
-            src="/doctorWomanLg.png"
-            alt="doctor"
-          />
-          <div className="text-white w-full bg-[#2A9988] rounded-xl absolute bottom-0">
+        <div className="hidden md:hidden lg:flex w-full pt-20">
+          <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
             <div className="flex flex-col items-start justify-start w-1/2 gap-5 py-8 pl-10">
               <h1 className="text-5xl font-semibold">
                 Learn how to stay Healthy from these tips!
@@ -145,11 +134,25 @@ const Home = () => {
                 Learn more
               </button>
             </div>
+            <Image
+              width={400}
+              height={50}
+              className="overflow-visible absolute bottom-0 right-40 z-20"
+              src="/doctorLg.png"
+              alt="doctor"
+            />
+            <Image
+              width={300}
+              height={50}
+              className="absolute bottom-0 right-0 z-10"
+              src="/doctorWomanLg.png"
+              alt="doctor"
+            />
           </div>
         </div>
         <br />
         <div className="flex flex-col w-full gap-3 mt-0 lg:gap-10 lg:mt-10">
-          <h1 className="font-bold lg:text-4xl text-[#2A9988] text-center">
+          <h1 className="font-bold md:text-2xl lg:text-4xl text-[#2A9988] text-center">
             Find your Doctor
           </h1>
           <div className="grid h-full grid-cols-4 gap-2 overflow-scroll md:grid-cols-4 lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10">
@@ -179,19 +182,27 @@ const Home = () => {
       </div>
       <br />
       <div className="w-full flex flex-col items-start justify-center bg-[#1C665B] text-white px-4 overflow-auto">
-        <div className="flex flex-row items-center justify-between w-full py-5 overflow-hidden">
-          <h1 className="font-semibold lg:text-4xl">Our Doctors</h1>
-          <a className="text-xs font-light cursor-pointer lg:text-xl">
+        <div className="flex flex-row items-center justify-between w-full py-8 overflow-hidden">
+          <h1 className="font-semibold md:text-2xl lg:text-4xl">Our Doctors</h1>
+          <a className="text-xs font-light cursor-pointer md:text-xl lg:text-xl">
             view more
           </a>
         </div>
         <div className="w-full overflow-auto">
-          <div className="flex gap-5 pb-8 overflow-x-auto w-fit">
+          <div className="flex gap-5 pb-12 overflow-x-auto w-fit">
             {doctorsArray.slice(0, 3).map((data) => {
               return (
-                <div key={data.id} className="flex flex-row items-center justify-start py-3 bg-white w-72 rounded-xl">
+                <div
+                  key={data.id}
+                  className="flex flex-row items-center justify-start py-3 bg-white w-72 rounded-xl"
+                >
                   <div className="flex flex-col items-center justify-center w-2/5 p-2">
-                    <Image width={80} height={80} alt="docPic" src={data.profilePic} />
+                    <Image
+                      width={80}
+                      height={80}
+                      alt="docPic"
+                      src={data.profilePic}
+                    />
                   </div>
                   <div className="flex flex-col items-start justify-center w-3/5 text-black">
                     <h1>Dr. Sayall Olawale</h1>
