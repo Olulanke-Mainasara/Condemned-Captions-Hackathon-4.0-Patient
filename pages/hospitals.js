@@ -29,12 +29,12 @@ export default function Hospitals({ allHospitals }) {
         <div className="flex mx-auto flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
           <Nav />
 
-          <h1 className="text-4xl text-center md:text-6xl text-[#1C665B]">
+          <h1 className="text-4xl text-center md:text-6xl text-[#2A9988]">
             Hospitals
           </h1>
 
           <div className="flex flex-col h-full mt-10 overflow-hidden ">
-            <div className="flex items-center justify-around text-center">
+            <div className="flex items-center justify-around text-center dark:text-white">
               <Button
                 cState={all}
                 label={"All"}

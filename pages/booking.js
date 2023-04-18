@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { states } from "@/data/arrays";
-import { times } from "@/data/arrays";
 import useStore from "@/providers/appStore";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummy from "/data/doctorsDummyData.json";
@@ -9,13 +8,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 function Booking() {
-  const { items, addItem } = useStore();
+  const { addItem, addUpcoming } = useStore();
   const [selectedGender, setSelectedGender] = useState("Male");
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [availableHospitals, setAvailableHospitals] = useState([]);
   const specialistsArray = specialistsDummy.specialists;
   const doctorsArray = doctorsDummy.doctors;
 
   const formFieldsRef = useRef({
+    id: Math.floor(Math.random() * 10000),
     status: "upcoming",
     fname: "",
     lname: "",
@@ -26,6 +27,7 @@ function Booking() {
     hospital: "",
     department: "",
     specialist: "",
+    doc: "/doc1.svg",
     complaint: "",
     appointmentDate: "",
     appointmentTime: "",
@@ -36,36 +38,26 @@ function Booking() {
   const handleSubmit = (event) => {
     event.preventDefault();
     addItem(formFieldsRef.current);
+    addUpcoming(formFieldsRef.current);
     formRef.current.reset();
-    resetFormFields();
     setShowConfirmation(true);
-  };
-
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
-
-  const resetFormFields = () => {
-    formFieldsRef.current = {
-      fname: "",
-      lname: "",
-      dob: "",
-      address: "",
-      gender: "Male",
-      state: "",
-      hospital: "",
-      department: "",
-      specialist: "",
-      complaint: "",
-      appointmentDate: "",
-      appointmentTime: "",
-    };
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     formFieldsRef.current[name] = value;
   };
+
+  async function handleAvailableHospitals(event) {
+    const { value } = event.target;
+    const hospitalQuery = `hospital in ${value} Nigeria`;
+
+    const searchUrl = `https://nominatim.openstreetmap.org/search?q=${hospitalQuery}&format=json&limit=10`;
+
+    const searchResponse = await fetch(searchUrl);
+    const searchData = await searchResponse.json();
+    setAvailableHospitals(searchData);
+  }
 
   const handleGenderChange = (event) => {
     setSelectedGender(event.target.value);
@@ -74,7 +66,7 @@ function Booking() {
   return (
     <>
       <main
-        className={`flex flex-col justify-center w-screen gap-6 p-6 px-4 bg-[#2a9988] text-white ${
+        className={`flex flex-col justify-center w-screen gap-6 xl:gap-0 p-6 xl:pt-32 px-4 text-white xl:h-screen xl:overflow-hidden ${
           showConfirmation
             ? "h-screen overflow-hidden"
             : "min-h-screen overflow-scroll"
@@ -82,26 +74,26 @@ function Booking() {
       >
         <Nav />
 
-        <h1 className="text-3xl text-center text-white md:text-4xl">
+        <h1 className="text-3xl text-center text-[#2A9988] md:text-4xl xl:text-6xl">
           Book an appointment
         </h1>
 
         <div className="flex items-center justify-around mb-16">
           <form
             ref={formRef}
-            className="flex flex-col justify-center w-full h-fit p-4 md:p-8 py-5 gap-7 md:gap-10 bg-[#fcffff80] rounded-xl shadow-lg max-w-xl xl:max-w-fit"
+            className="flex flex-col justify-center w-full max-w-xl p-4 py-5 h-fit md:p-8 gap-7 md:gap-10 xl:max-w-fit"
             onSubmit={handleSubmit}
           >
-            <div className="flex flex-col items-center w-full xl:flex-row gap-7 xl:gap-10">
+            <div className="flex flex-col items-center w-full gap-10 text-black dark:text-white xl:flex-row">
               <fieldset
-                className={`w-full flex flex-col xl:flex-row items-center gap-7 xl:gap-10 rounded-lg basis-3/4`}
+                className={`w-full flex flex-col xl:flex-row items-center gap-10 rounded-lg basis-3/4`}
               >
-                <div className="flex flex-col w-full gap-4">
+                <div className="flex flex-col w-full gap-6">
                   <label>
                     Patients first name
                     <input
                       type="text"
-                      className="w-full h-12 pl-2 text-black rounded min-w-[300px] mt-1"
+                      className="w-full h-12 pl-3 rounded min-w-[300px] mt-1"
                       name="fname"
                       pattern="[A-Za-z]+"
                       minLength="2"
@@ -115,7 +107,7 @@ function Booking() {
                     Patients last name
                     <input
                       type="text"
-                      className="w-full h-12 pl-2 text-black rounded min-w-[300px] mt-1"
+                      className="w-full h-12 pl-3 rounded min-w-[300px] mt-1"
                       name="lname"
                       pattern="[A-Za-z]+"
                       minLength="2"
@@ -129,7 +121,7 @@ function Booking() {
                     Date of Birth
                     <input
                       type="date"
-                      className="w-full h-12 px-2 mt-1 text-black rounded"
+                      className="w-full h-12 px-3 mt-1 rounded"
                       name="dob"
                       onChange={handleInputChange}
                     />
@@ -139,7 +131,7 @@ function Booking() {
                     Address
                     <input
                       type="text"
-                      className="w-full h-12 pl-2 mt-1 text-black rounded"
+                      className="w-full h-12 pl-3 mt-1 rounded"
                       name="address"
                       minLength="2"
                       required
@@ -182,14 +174,18 @@ function Booking() {
 
                 <hr className="w-full xl:hidden" />
 
-                <div className="flex flex-col w-full gap-4">
+                <div className="flex flex-col w-full gap-6">
                   <label className="w-full">
                     State
                     <select
                       name="state"
-                      className="w-full h-12 px-2 mt-1 text-black rounded outline-none"
-                      onChange={handleInputChange}
+                      className="w-full h-12 px-3 mt-1 rounded outline-none"
+                      onChange={(e) => {
+                        handleInputChange(e);
+                        handleAvailableHospitals(e);
+                      }}
                     >
+                      <option>Select</option>
                       {states.map((state) => (
                         <option key={state.id} value={state.state}>
                           {state.state}
@@ -202,14 +198,21 @@ function Booking() {
                     Hospital
                     <select
                       name="hospital"
-                      className="w-full h-12 px-2 mt-1 text-black rounded outline-none"
+                      className="w-full h-12 px-3 mt-1 rounded outline-none"
                       onChange={handleInputChange}
                     >
                       <option>Select</option>
-                      <option>Abia</option>
-                      <option>Abia</option>
-                      <option>Abia</option>
-                      <option>Abia</option>
+                      {availableHospitals.map((hospital) => {
+                        const splitDisplay = hospital.display_name.split(",");
+                        return (
+                          <option
+                            key={hospital.place_id}
+                            value={splitDisplay[0]}
+                          >
+                            {splitDisplay[0]}
+                          </option>
+                        );
+                      })}
                     </select>
                   </label>
 
@@ -217,9 +220,10 @@ function Booking() {
                     Department
                     <select
                       name="department"
-                      className="w-full h-12 px-2 mt-1 text-black rounded outline-none"
+                      className="w-full h-12 px-3 mt-1 rounded outline-none"
                       onChange={handleInputChange}
                     >
+                      <option>Select</option>
                       {specialistsArray.map((data) => (
                         <option key={data.id} value={data.type}>
                           {data.type}
@@ -232,9 +236,10 @@ function Booking() {
                     Specialist
                     <select
                       name="specialist"
-                      className="w-full h-12 px-2 mt-1 text-black rounded outline-none"
+                      className="w-full h-12 px-3 mt-1 rounded outline-none"
                       onChange={handleInputChange}
                     >
+                      <option>Select</option>
                       {doctorsArray.map((data) => (
                         <option key={data.id} value={data.name}>
                           {data.name}
@@ -247,12 +252,12 @@ function Booking() {
 
               <hr className={`w-full xl:hidden`} />
 
-              <div className="flex flex-col w-full gap-4 basis-1/2">
+              <div className="flex flex-col w-full gap-6 basis-1/2">
                 <label className="text-xl text-center">
                   Complaint
                   <textarea
                     name="complaint"
-                    className="w-full p-4 mt-1 text-base text-black rounded-lg outline-none"
+                    className="w-full p-3 mt-1 text-base rounded-lg outline-none"
                     rows={8}
                     cols={40}
                     placeholder="Please write down your complaint"
@@ -264,7 +269,7 @@ function Booking() {
                   Appointment date
                   <input
                     type="date"
-                    className="w-full h-12 px-2 mt-1 text-black rounded"
+                    className="w-full h-12 px-3 mt-1 rounded"
                     name="appointmentDate"
                     onChange={handleInputChange}
                   />
@@ -272,17 +277,15 @@ function Booking() {
 
                 <label className="w-full">
                   Appointment time
-                  <select
+                  <input
+                    type="time"
+                    className="w-full h-12 px-3 mt-1 rounded"
                     name="appointmentTime"
-                    className="w-full h-12 px-2 mt-1 text-black rounded outline-none"
+                    min="08:00"
+                    max="17:00"
+                    required
                     onChange={handleInputChange}
-                  >
-                    {times.map((time) => (
-                      <option key={time.id} value={time.time}>
-                        {time.time}
-                      </option>
-                    ))}
-                  </select>
+                  />
                 </label>
               </div>
             </div>
@@ -296,6 +299,7 @@ function Booking() {
           </form>
         </div>
       </main>
+      
       {showConfirmation && (
         <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
           <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">

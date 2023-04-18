@@ -17,30 +17,23 @@ function Specialists() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex items-center justify-center w-screen">
-        <div className="flex flex-col items-center justify-center h-screen gap-8 pt-5 pb-10 overflow-hidden xl:pt-24 xl:w-1/2">
+        <div className="flex flex-col items-center justify-center h-screen gap-10 pt-5 pb-10 overflow-hidden xl:pt-24 xl:w-1/2">
           <Nav />
 
-          <div className="w-full px-4 md:px-0">
-            <h1 className="text-4xl text-center md:text-6xl text-[#1C665B]">
+          <div className="w-full px-3 md:px-0">
+            <h1 className="text-4xl text-center md:text-6xl text-[#2A9988]">
               Specialists
             </h1>
-            <form className="w-full h-10 md:h-12 mt-6 rounded-lg md:rounded-xl border border-[#83E5D7] overflow-hidden">
-              <input
-                type="text"
-                className="w-full h-full pl-4 placeholder-black bg-transparent"
-                placeholder="Search for specialists"
-              ></input>
-            </form>
           </div>
 
           <div className="w-full overflow-hidden">
-            <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll dark:text-white md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
               {dummyData.map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
                     <div className="flex flex-col items-center justify-center mb-8">
                       <div className="relative w-24 h-20 max-w-full lg:w-36 lg:h-32">
-                        <Image fill src={data.imgSrc} alt="docPic" />
+                        <Image fill src={data.imgSrc} priority alt="docPic" />
                       </div>
                       <p className="text-sm lg:text-lg">{data.type}</p>
                     </div>

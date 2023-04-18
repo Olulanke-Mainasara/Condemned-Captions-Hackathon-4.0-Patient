@@ -2,9 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import useNavigationBar from "./hooks/useNavigationBar";
+import useStore from "@/providers/appStore";
 
 function Nav() {
   const [navMenu, openMenu, closeMenu] = useNavigationBar();
+  const { dark, toggleDark } = useStore();
 
   const links = [
     {
@@ -62,6 +64,20 @@ function Nav() {
                 </Link>
               </li>
             ))}
+
+            <button
+              title="Theme"
+              onClick={() => {
+                toggleDark();
+              }}
+              className="relative hidden xl:flex items-center justify-center w-6 aspect-square text-base text-[#2A9988] rounded-full"
+            >
+              {dark ? (
+                <Image fill src={"/light.svg"} alt="closeMenu" />
+              ) : (
+                <Image fill src={"/dark.svg"} alt="closeMenu" />
+              )}
+            </button>
 
             <button
               title="Open navigation menu"
