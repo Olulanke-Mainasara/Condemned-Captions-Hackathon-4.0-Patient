@@ -37,16 +37,3 @@ export const states = [
   { id: 35, state: "Yobe" },
   { id: 36, state: "Zamfara" },
 ];
-
-export const times = [
-  { id: 0, time: "8:00am" },
-  { id: 1, time: "9:00am" },
-  { id: 2, time: "10:00am" },
-  { id: 3, time: "11:00am" },
-  { id: 4, time: "12:00pm" },
-  { id: 5, time: "1:00pm" },
-  { id: 6, time: "2:00pm" },
-  { id: 7, time: "3:00pm" },
-  { id: 8, time: "4:00pm" },
-  { id: 9, time: "5:00pm" },
-];

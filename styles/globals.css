@@ -3,6 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+input, select, textarea {
+  border: 1px solid gray;
+}
+
+ .dark input, .dark select, .dark textarea {
+  color: white;
+  background: transparent;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator, .dark input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -10,11 +23,27 @@ input[type="radio"] {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid white;
-  outline: none;
+  background-color: white;
+  border: 2px solid black;
+  outline: 2px solid transparent;
   cursor: pointer;
+  transition: background-color 500ms, border-color 500ms, outline-color 500ms;
+}
+
+.dark input[type="radio"] {
+  background-color: black;
+  border: 2px solid white;
+  outline: 2px solid black;
 }
 
 input[type="radio"]:checked {
+  background-color: #2A9988;
+  border: 4px solid white;
+  outline-color: #2A9988;
+}
+
+.dark input[type="radio"]:checked {
   background-color: white;
+  border: 4px solid black;
+  outline-color: white;
 }

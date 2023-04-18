@@ -8,7 +8,6 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: var(--primary-color);
 }
 
 .image-section {
@@ -30,27 +29,24 @@ form {
   flex-direction: column;
   gap: 20px;
   padding: 23px;
-  background: #fcffff80;
-  border-radius: 15px;
 }
 
 .rectangle > h2 {
   font-size: 32px;
-  font-weight: 700;
   text-align: center;
-  color: var(--Primary-colour-dark-shade);
+  color: #2A9988;
 }
 
 .rectangle > label {
-  color: var(--Primary-colour-dark-shade);
+  color: white;
   font-weight: 400;
 }
 
 .rectangle > label > input {
   width: 100%;
-  height: 41px;
+  height: 48px;
   border-radius: 6px;
-  background-color: #fff;
+  background: transparent;
   margin-top: 10px;
   padding-left: 15px;
 }
@@ -67,12 +63,13 @@ input:focus {
 .terms {
   font-size: 14px;
   text-align: center;
-  color: var(--Primary-colour-dark-shade);
+  color: white;
 }
 
 .terms > span,
 .terms a {
   font-weight: 700;
+  color: var(--Primary-colour-dark-shade)
 }
 
 .rectangle > button {

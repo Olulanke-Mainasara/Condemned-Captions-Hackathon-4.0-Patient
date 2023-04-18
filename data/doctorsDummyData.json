@@ -4,61 +4,61 @@
             "id": 1,
             "profilePic": "/doc1.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D., Dr."
         },
         {
             "id": 2,
             "profilePic": "/doc2.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Dr."
         },
         {
             "id": 3,
             "profilePic": "/doc1.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D."
         },
         {
             "id": 4,
             "profilePic": "/doc2.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D., Dr."
         },
         {
             "id": 5,
             "profilePic": "/doc1.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Dr."
         },
         {
             "id": 6,
             "profilePic": "/doc2.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D."
         },
         {
             "id": 7,
             "profilePic": "/doc1.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D., Dr."
         },
         {
             "id": 8,
             "profilePic": "/doc2.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Dr."
         },
         {
             "id": 9,
             "profilePic": "/doc1.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D."
         },
         {
             "id": 10,
             "profilePic": "/doc2.svg",
             "name": "Dr. Sayali Olawale",
-            "type": "Cardiologist"
+            "degrees": "M.Sc., Ph.D., Dr."
         }
     ]
 }
