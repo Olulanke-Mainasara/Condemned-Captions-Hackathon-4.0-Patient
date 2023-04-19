@@ -15,7 +15,7 @@ export default function Home() {
       </Head>
       <main>
         <Splash />
-        <section className="py-12 flex flex-col items-center justify-start w-full h-full gap-10">
+        <section className="lg:pt-28 pt-12 flex flex-col items-center justify-start w-full h-full gap-10">
           <div className="w-full flex flex-col items-center px-4 sm: px-20">
             <Image
               src={"/landingPage.svg"}
@@ -24,7 +24,7 @@ export default function Home() {
               alt="placeholderImg"
             />
           </div>
-          <div className="w-full flex flex-col items-center px-4 sm:px-20">
+          <div className="w-full flex flex-col text-black dark:text-white items-center px-4 sm:px-20">
             <h1 className="text-4xl font-bold w-full text-center">
               Get Medical Consultation from Home
             </h1>
@@ -33,13 +33,11 @@ export default function Home() {
               Welcome to <b className="text-[#2A9988]">NextGen Doctors</b> where
               you can receive medical care from the comfort of your own home.
             </p>
-            {/* <Link href="/"> */}
             <button className="p-2 w-1/2 bg-[#2A9988] mt-6 sm:mt-10 rounded-md text-white font-semibold text-xl">
-              Get Started
+              <Link href="/">Get Started</Link>
             </button>
-            {/* </Link> */}
           </div>
-          <div className="w-full flex flex-col items-end">
+          <div className="w-full flex flex-col items-end text-black dark:text-white">
             <div className="w-full flex flex-col items-center px-4 sm:px-20">
               <h1 className="text-xl font-bold w-full text-center">
                 Expert Care from Trusted Medical Professionals

@@ -12,7 +12,7 @@ const useStore = create((set) => ({
       upcomingItems: state.upcomingItems.filter((i) => i !== item),
     })),
 
-  dark: true,
+  dark: false,
   toggleDark: () => set((state) => ({ dark: !state.dark })),
 
   splash: true,

@@ -125,14 +125,19 @@ function Consultations() {
                                 className="px-3 py-1 text-red-500 border border-red-500 rounded-lg"
                                 onClick={() => openCancelModal(data)}
                               >
-                                Cancel app.
+                                Cancel appointment
                               </button>
                             )}
                           </div>
                           <div className="flex items-center justify-between w-full p-4">
                             <div className="flex items-center gap-2">
                               <div className="relative w-20 xl:w-32 aspect-square">
-                                <Image fill src={data.doc} priority alt="ProfilePic" />
+                                <Image
+                                  fill
+                                  src={data.doc}
+                                  priority
+                                  alt="ProfilePic"
+                                />
                               </div>
                               <div>
                                 <h1 className="xl:text-2xl">
