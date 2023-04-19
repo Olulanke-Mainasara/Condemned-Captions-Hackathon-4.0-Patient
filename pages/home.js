@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { Input, Rate } from "antd";
+import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
@@ -60,13 +60,12 @@ const Home = () => {
                 width={15}
                 className="cursor-pointer"
               />
-              <Image
-                src="/user.png"
-                alt="user"
-                width={30}
-                height={30}
-                className="cursor-pointer"
-              />
+              <Link
+                href={"/editprofile"}
+                className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
+              >
+                <Image fill src={"/user.png"} alt="closeMenu" />
+              </Link>
             </div>
           </div>
           <br />
@@ -87,7 +86,7 @@ const Home = () => {
                   Learn How to Stay Healthy From these Tips!
                 </h1>
                 <p className="text-xs font-light">
-                  Eat fruits, Drink water, Excercise regularly, avoid smoking...
+                  Eat fruits, Drink water, Exercise regularly, avoid smoking...
                 </p>
                 <br />
                 <button className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]">
@@ -110,8 +109,8 @@ const Home = () => {
                   Learn how to stay Healthy from these tips!
                 </h1>
                 <p className="text-xl font-light">
-                  Eat fruits, <br /> Drink water, <br /> Excercise regularly,
-                  and avoid smoking...
+                  Eat fruits, <br /> Drink water, <br /> Exercise regularly, and
+                  avoid smoking...
                 </p>
                 <br />
                 <button className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]">
@@ -136,7 +135,7 @@ const Home = () => {
                 <ul className="text-2xl ">
                   <li>• Eat plenty of fruits daily</li>
                   <li>• Drink enough water daily</li>
-                  <li>• Excercise regularly everyday</li>
+                  <li>• Exercise regularly everyday</li>
                   <li>• Avoid smoking...</li>
                 </ul>
                 <button className="px-8 py-2 rounded-xl text-2xl bg-[#3EE5CC]">
@@ -179,7 +178,10 @@ const Home = () => {
               })}
               {
                 <div className="flex flex-col items-center justify-center">
-                  <Link href={"/specialists"} className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white w-14 h-14 lg:w-36 lg:h-32">
+                  <Link
+                    href={"/specialists"}
+                    className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white dark:text-black w-14 h-14 lg:w-36 lg:h-32"
+                  >
                     +
                   </Link>
                   <br />
@@ -195,7 +197,10 @@ const Home = () => {
             <h1 className="font-semibold md:text-2xl lg:text-4xl">
               Our Doctors
             </h1>
-            <Link className="text-xs font-light cursor-pointer md:text-xl lg:text-xl">
+            <Link
+              href={"/specialists"}
+              className="text-xs font-light cursor-pointer md:text-xl lg:text-xl"
+            >
               view more
             </Link>
           </div>
@@ -216,7 +221,7 @@ const Home = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start justify-center w-3/5 text-black">
-                      <h1>Dr. Sayall Olawale</h1>
+                      <h1>Dr. Sayali Olawale</h1>
                       <p>Cardiologist</p>
                     </div>
                   </div>

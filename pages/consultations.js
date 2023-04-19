@@ -174,7 +174,7 @@ function Consultations() {
                     </>
                   )}
                   <Link
-                    className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 right-0"
+                    className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] duration-500 text-white rounded-lg shadow-lg absolute bottom-12 right-0"
                     href={"/booking"}
                   >
                     <div className="relative w-5 h-5">
@@ -254,7 +254,7 @@ function Consultations() {
                 No
               </button>
               <button
-                className="px-3 py-1 border bg-[#2a9988] hover:bg-[#1C665B] rounded-lg"
+                className="px-3 py-1 border bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-lg"
                 onClick={() => cancelApp()}
               >
                 Yes

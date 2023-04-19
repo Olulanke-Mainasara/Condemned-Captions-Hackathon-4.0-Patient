@@ -93,17 +93,9 @@ function Nav() {
           className={`flex flex-col gap-6 px-6 items-start justify-center text-base absolute bottom-0 h-screen w-full bg-[#F8FFFE] dark:bg-black xl:hidden duration-500 ${navMenu}`}
         >
           <div className="flex items-center justify-between w-full mt-24">
-            <button
-              title="Close navigation menu"
-              onClick={closeMenu}
-              className="relative w-6 text-lg text-black dark:text-white aspect-square"
-            >
-              <Image fill src={"/close.svg"} alt="closeMenu" />
-            </button>
-
             <Link
               href={"/editprofile"}
-              className="relative w-5 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
+              className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
             >
               <Image fill src={"/user.png"} alt="closeMenu" />
             </Link>
@@ -121,9 +113,17 @@ function Nav() {
                 <Image fill src={"/dark.svg"} alt="closeMenu" />
               )}
             </button>
+
+            <button
+              title="Close navigation menu"
+              onClick={closeMenu}
+              className="relative w-6 text-lg dark:text-white aspect-square"
+            >
+              <Image fill src={"/close.svg"} alt="closeMenu" />
+            </button>
           </div>
 
-          <div className="relative h-full pt-10 pb-8 overflow-hidden">
+          <div className="relative w-full h-full pt-10 pb-8 overflow-hidden">
             <div
               className={`w-full h-full ${
                 upcomingItems.length == 0
@@ -204,7 +204,7 @@ function Nav() {
             </div>
           </div>
 
-          <button className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 right-0">
+          <button className="w-1/2 flex items-center justify-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg mb-5 mx-auto">
             Logout
           </button>
         </div>
