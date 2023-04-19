@@ -218,7 +218,6 @@ const Home = () => {
                     <div className="flex flex-col items-start justify-center w-3/5 text-black">
                       <h1>Dr. Sayall Olawale</h1>
                       <p>Cardiologist</p>
-                      <Rate disabled allowClear allowHalf defaultValue={3.5} />
                     </div>
                   </div>
                 );
