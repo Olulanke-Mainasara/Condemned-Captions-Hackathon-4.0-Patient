@@ -125,7 +125,7 @@ function Consultations() {
                                 className="px-3 py-1 text-red-500 border border-red-500 rounded-lg"
                                 onClick={() => openCancelModal(data)}
                               >
-                                Cancel app.
+                                Cancel appointment
                               </button>
                             )}
                           </div>

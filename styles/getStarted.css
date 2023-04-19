@@ -16,6 +16,10 @@
   background-size: cover;
 }
 
+label {
+  font-weight: 600;
+}
+
 form {
   display: flex;
   align-items: center;
@@ -34,12 +38,12 @@ form {
 .rectangle > h2 {
   font-size: 32px;
   text-align: center;
-  color: #2A9988;
+  color: #2dbea9;
 }
 
-.rectangle > label {
+.dark .rectangle > label {
   color: white;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .rectangle > label > input {
@@ -52,43 +56,70 @@ form {
 }
 
 ::placeholder {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
+  color: white;
 }
 
 input:focus {
   outline: none;
 }
 
-.terms {
+.dark .terms {
   font-size: 14px;
-  text-align: center;
   color: white;
+}
+
+.terms {
+  text-align: center;
 }
 
 .terms > span,
 .terms a {
   font-weight: 700;
-  color: var(--Primary-colour-dark-shade)
+  color: var(--primary-color);
 }
 
 .rectangle > button {
   width: 100%;
-  background-color: var(--Primary-colour-dark-shade);
+  background-color: var(--primary-color);
   border-radius: 6px;
   height: 41px;
   color: var(--Neutral);
   letter-spacing: 0.5px;
 }
 
-.grad {
-  background: linear-gradient(
-    to right,
-    #2a9988,
-    #2a9988,
-    #2a9988,
-    #2a9988,
-    #fff,
-    #fff
-  );
+.rectangle > button:hover {
+  background-color: var(--Primary-colour-dark-shade);
+}
+
+@media only screen and (max-width: 960px) {
+  .full {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px) brightness(50%);
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rectangle > label > input {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  }
+
+  form {
+    background-image: url("/loginPic.svg");
+    background-size: cover;
+    object-fit: cover;
+  }
+
+  label {
+    color: white;
+  }
+
+  .terms {
+    color: white;
+  }
 }
