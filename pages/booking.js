@@ -291,7 +291,7 @@ function Booking() {
             </div>
 
             <button
-              className="bg-[#1C665B] w-4/5 py-3 rounded-lg text-white max-w-md"
+              className="bg-[#2a9988] hover:bg-[#1C665B] w-4/5 py-3 rounded-lg text-white max-w-md"
               type="submit"
             >
               Confirm appointment
@@ -299,7 +299,7 @@ function Booking() {
           </form>
         </div>
       </main>
-      
+
       {showConfirmation && (
         <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
           <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">
@@ -311,7 +311,7 @@ function Booking() {
             <h1 className="text-2xl">Appointment booked</h1>
             <Link
               href={"/consultations"}
-              className="bg-[#1C665B] w-4/5 py-3 rounded-lg text-white text-center"
+              className="bg-[#2a9988] hover:bg-[#1C665B] w-4/5 py-3 rounded-lg text-white text-center"
             >
               Consultations
             </Link>

@@ -132,7 +132,12 @@ function Consultations() {
                           <div className="flex items-center justify-between w-full p-4">
                             <div className="flex items-center gap-2">
                               <div className="relative w-20 xl:w-32 aspect-square">
-                                <Image fill src={data.doc} priority alt="ProfilePic" />
+                                <Image
+                                  fill
+                                  src={data.doc}
+                                  priority
+                                  alt="ProfilePic"
+                                />
                               </div>
                               <div>
                                 <h1 className="xl:text-2xl">
@@ -162,13 +167,14 @@ function Consultations() {
                         <Image
                           src={"/emptyList.svg"}
                           fill
+                          priority
                           alt="placeholderImg"
                         />
                       </div>
                     </>
                   )}
                   <Link
-                    className="flex items-center gap-2 px-4 py-3 bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 right-0"
+                    className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 right-0"
                     href={"/booking"}
                   >
                     <div className="relative w-5 h-5">
@@ -242,13 +248,13 @@ function Consultations() {
             </h1>
             <div className="flex items-center justify-center gap-10 text-white">
               <button
-                className="px-3 py-1 bg-red-500 border rounded-lg"
+                className="px-3 py-1 bg-red-500 border rounded-lg hover:bg-red-800"
                 onClick={() => closeCancelModal()}
               >
                 No
               </button>
               <button
-                className="px-3 py-1 border bg-[#1C665B] rounded-lg"
+                className="px-3 py-1 border bg-[#2a9988] hover:bg-[#1C665B] rounded-lg"
                 onClick={() => cancelApp()}
               >
                 Yes

@@ -162,7 +162,7 @@ const Home = () => {
             <h1 className="font-bold lg:text-4xl text-[#2A9988] text-center">
               Find your Doctor
             </h1>
-            <div className="grid h-full grid-cols-4 gap-2 overflow-scroll md:grid-cols-4 lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid h-full grid-cols-4 gap-2 overflow-scroll text-black md:grid-cols-4 lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10 dark:text-white">
               {dummyData.slice(0, 7).map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
@@ -179,9 +179,9 @@ const Home = () => {
               })}
               {
                 <div className="flex flex-col items-center justify-center">
-                  <div className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg w-14 h-14 lg:w-36 lg:h-32">
+                  <Link href={"/specialists"} className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white w-14 h-14 lg:w-36 lg:h-32">
                     +
-                  </div>
+                  </Link>
                   <br />
                   <p className="text-xs lg:text-lg">More</p>
                 </div>
@@ -193,9 +193,9 @@ const Home = () => {
         <div className="w-full flex flex-col items-start justify-center bg-[#1C665B] text-white px-4 overflow-auto">
           <div className="flex flex-row items-center justify-between w-full py-5 overflow-hidden">
             <h1 className="font-semibold lg:text-4xl">Our Doctors</h1>
-            <a className="text-xs font-light cursor-pointer lg:text-xl">
+            <Link href={"/specialists"} className="text-xs font-light cursor-pointer lg:text-xl">
               view more
-            </a>
+            </Link>
           </div>
           <div className="w-full overflow-auto">
             <div className="flex gap-5 pb-8 overflow-x-auto w-fit">
