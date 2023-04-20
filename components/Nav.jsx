@@ -93,10 +93,10 @@ function Nav() {
         <div
           className={`flex flex-col gap-6 px-6 items-start justify-center text-base absolute bottom-0 h-screen w-full bg-[#F8FFFE] dark:bg-black xl:hidden duration-500 ${navMenu}`}
         >
-          <div className="flex items-center justify-between w-full mt-12">
+          <div className="flex items-center justify-between w-full mt-24">
             <Link
               href={"/editprofile"}
-              className="flex flex-row items-center gap-2 px-16 py-2 text-lg text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
+              className="flex flex-row items-center gap-2 px-16 sm:px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
             >
               <EditOutlined /> Edit Profile
             </Link>
@@ -208,7 +208,7 @@ function Nav() {
                 </>
               )}
               <Link
-                className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 right-0"
+                className="flex items-center gap-2 text-sm px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 right-0"
                 href={"/booking"}
               >
                 <div className="relative w-5 h-5">
@@ -216,7 +216,7 @@ function Nav() {
                 </div>
                 Book an Appointment
               </Link>
-              <button className="flex items-center justify-center gap-2 px-24 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 left-0 mx-auto">
+              <button className="flex items-center justify-center text-sm gap-2 px-24 sm:px-8 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
                 Logout
               </button>
             </div>
