@@ -9,9 +9,9 @@ textarea {
   border: 1px solid gray;
 }
 
-.dark input,
-.dark select,
-.dark textarea {
+.dark .booking input,
+.dark .booking select,
+.dark .booking textarea {
   color: white;
   background: transparent;
 }
