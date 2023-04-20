@@ -239,8 +239,8 @@ const Home = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start justify-center w-3/5 text-black">
-                      <h1>Dr. Sayali Olawale</h1>
-                      <p>Cardiologist</p>
+                      <h1>{data.name}</h1>
+                      <p>{data.degrees}</p>
                     </div>
                   </div>
                 );
