@@ -6,6 +6,7 @@ import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummy from "/data/doctorsDummyData.json";
 import Head from "next/head";
 import { Ticket } from "@/components/Ticket/Ticket";
+import { useRouter } from "next/router";
 
 function Booking() {
   const { addItem, addUpcoming } = useStore();
@@ -19,6 +20,7 @@ function Booking() {
   const [availableHospitals, setAvailableHospitals] = useState([]);
   const specialistsArray = specialistsDummy.specialists;
   const doctorsArray = doctorsDummy.doctors;
+  const router = useRouter();
 
   const formFieldsRef = useRef({
     id: Math.floor(Math.random() * 10000),
@@ -89,6 +91,15 @@ function Booking() {
         }`}
       >
         <Nav />
+
+        <div>
+          <button
+            className="px-1 dark:text-white"
+            onClick={() => router.back()}
+          >
+            &larr; Back
+          </button>
+        </div>
 
         <h1 className="text-3xl text-center text-[#2A9988] md:text-4xl xl:text-6xl">
           Book an appointment

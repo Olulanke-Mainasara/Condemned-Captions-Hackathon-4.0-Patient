@@ -48,7 +48,7 @@ const Home = () => {
         <div className="flex flex-col items-center justify-start w-full h-full px-3 md:px-8 lg:px-12">
           <div className="flex flex-row items-center justify-between w-full">
             <div>
-              <h1 className="text-xl font-semibold text-white sm:text-3xl">
+              <h1 className="text-xl font-semibold dark:text-white sm:text-3xl">
                 Hi, <span className="text-[#2A9988]">{name}</span>
               </h1>
             </div>
