@@ -9,18 +9,24 @@ import doctorsDummyData from "/data/doctorsDummyData.json";
 import Nav from "@/components/Nav";
 
 const Home = () => {
-  const [value, setValue] = useState();
-
-  const onSearch = () => {
-    console.log(value);
-  };
+  const [value, setValue] = useState("");
 
   const dummyData = specialistsDummy.specialists;
   const doctorsArray = doctorsDummyData.doctors;
 
+  const onSearch = (e) => {
+    const filterData = dummyData
+      .map((data) => data.type)
+      .filter(function (type) {
+        return type.includes(e.target.value);
+      });
+    setValue(filterData);
+    console.log(value);
+  };
+
   const prefix = (
     <SearchOutlined
-      onClick={onSearch}
+      onChange={(e) => onSearch(e)}
       style={{
         fontSize: 16,
         cursor: "pointer",
@@ -75,7 +81,7 @@ const Home = () => {
             <Input
               enterButton="Search"
               size="large"
-              onChange={(e) => setValue(e.currentTarget.value)}
+              onChange={(e) => onSearch(e)}
               prefix={prefix}
               placeholder="Search for Doctors"
               className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
