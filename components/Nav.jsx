@@ -96,7 +96,7 @@ function Nav() {
           <div className="flex items-center justify-between w-full mt-24">
             <Link
               href={"/editprofile"}
-              className="flex flex-row items-center gap-2 px-16 sm:px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
+              className="flex flex-row items-center gap-2 sm:px-16 px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
             >
               <EditOutlined /> Edit Profile
             </Link>
@@ -216,7 +216,7 @@ function Nav() {
                 </div>
                 Book an Appointment
               </Link>
-              <button className="flex items-center justify-center text-sm gap-2 px-24 sm:px-8 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
+              <button className="flex items-center justify-center text-sm gap-2 sm:px-24 px-8 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
                 Logout
               </button>
             </div>
