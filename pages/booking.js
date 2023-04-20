@@ -5,7 +5,8 @@ import useStore from "@/providers/appStore";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummy from "/data/doctorsDummyData.json";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
+import { Ticket } from "@/components/Ticket/Ticket";
 
 function Booking() {
   const { addItem, addUpcoming } = useStore();
@@ -299,22 +300,15 @@ function Booking() {
           </form>
         </div>
       </main>
-      
+
       {showConfirmation && (
         <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
           <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">
-            <div className="flex items-center justify-center w-20 rounded-full overflow-hidden aspect-square bg-[#1C665B]">
-              <div className="relative w-10 aspect-square">
-                <Image src={"/success.svg"} fill priority alt="successIcon" />
-              </div>
-            </div>
-            <h1 className="text-2xl">Appointment booked</h1>
-            <Link
-              href={"/consultations"}
-              className="bg-[#1C665B] w-4/5 py-3 rounded-lg text-white text-center"
-            >
-              Consultations
-            </Link>
+            <Ticket />
+            <h1 className="text-sm">
+              Download your Ticket and Keep it safe. You will present it to the
+              Doctor when you visit the hospital
+            </h1>
           </div>
         </div>
       )}
