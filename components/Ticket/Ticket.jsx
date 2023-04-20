@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { Card, QRCode, Button, message } from "antd";
 import Link from "next/link";
 
-export const Ticket = () => {
+export const Ticket = ({patientName, specialist, hospital, appointmentDate, appointmentTime}) => {
   const [string, setString] = useState(
-    "Patient Name: Anna, Consultation Status: Ongoing..."
+    `Patient Name: ${patientName}, Consultation Status: Upcoming...`
   );
   const [visible, setVisible] = useState(false);
 
@@ -34,15 +34,13 @@ export const Ticket = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <br />
       <Card
         size="small"
         className="card"
         title={
-          <h1 className="w-full text-center text-lg font-bold">
+          <h1 className="w-full text-lg font-bold text-center">
             Appointment Booked
             <br />
-            <hr className="w-full" />
           </h1>
         }
         bordered={false}
@@ -52,10 +50,10 @@ export const Ticket = () => {
         <div className="flex flex-col items-center justify-center">
           <div>
             <p style={{ textAlign: "center" }}>
-              <b>Dr. Sayall Olawale</b>
+              <b>{specialist}</b>
             </p>
             <p style={{ color: "teal", textAlign: "center" }}>
-              <b>Greenwich Hospital, 65b Ojota Rd.</b>
+              <b>{hospital}</b>
             </p>
             <br />
           </div>
@@ -70,19 +68,19 @@ export const Ticket = () => {
           </div>
           <br />
           <p>
-            <b>Patient Name: Anna</b>
+            <b>Patient Name: {patientName}</b>
           </p>
           <p>
-            <b>29th April, 2023</b>
+            <b>{appointmentDate + " | " + appointmentTime}</b>
           </p>
         </div>
       </Card>
       <br />
-      <Button.Group className="w-full rounded-xl">
+      <Button.Group className="w-[90%] rounded-xl">
         <Link
           href={"/consultations"}
           style={{ padding: "5px 40px" }}
-          className="bg-teal-700 hover:bg-teal-800 active:bg-teal-800 rounded-l-lg w-1/2 text-white flex flex-row items-center"
+          className="flex items-center justify-center w-1/2 text-white bg-teal-700 rounded-l-lg hover:bg-teal-800 active:bg-teal-800"
         >
           Consultations
         </Link>
@@ -91,7 +89,7 @@ export const Ticket = () => {
           style={{ padding: "5px 40px" }}
           type="primary"
           onClick={downloadTicket}
-          className="bg-teal-700 hover:bg-teal-800 active:bg-teal-800 w-1/2 text-white flex flex-row items-center"
+          className="flex flex-row items-center w-1/2 text-white bg-teal-700 hover:bg-teal-800 active:bg-teal-800"
         >
           Download
         </Button>

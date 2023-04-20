@@ -15,11 +15,8 @@ const useStore = create((set) => ({
   dark: true,
   toggleDark: () => set((state) => ({ dark: !state.dark })),
 
-  splash: true,
-  toggleSplash: () => set((state) => ({ splash: !state.splash })),
-
-  visited: 0,
-  increaseVisited: () => set((state) => ({ visited: state.visited + 1 })),
+  name: "welcome",
+  setName: (value) => set(() => ({ name: value })),
 }));
 
 export default useStore;

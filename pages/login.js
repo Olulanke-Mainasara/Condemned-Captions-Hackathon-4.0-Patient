@@ -15,7 +15,6 @@ const GetStarted = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user)
         window.location.href = "/home";
         // ...
       })
@@ -60,7 +59,7 @@ const GetStarted = () => {
               </label>
 
               {errorMessage && (
-                <p className="text-white xl:text-black">{errorMessage}</p>
+                <p className="text-white">{errorMessage}</p>
               )}
 
               <p className="terms">

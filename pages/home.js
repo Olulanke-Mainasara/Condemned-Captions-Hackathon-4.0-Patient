@@ -7,9 +7,11 @@ import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
 import Nav from "@/components/Nav";
+import useStore from "@/providers/appStore";
 
 const Home = () => {
   const [value, setValue] = useState("");
+  const { name } = useStore();
 
   const dummyData = specialistsDummy.specialists;
   const doctorsArray = doctorsDummyData.doctors;
@@ -48,7 +50,7 @@ const Home = () => {
           <div className="flex flex-row items-center justify-between w-full">
             <div>
               <h1 className="text-xl font-semibold text-white sm:text-3xl">
-                Hi, <span className="text-[#2A9988]">Anna</span>
+                Hi, <span className="text-[#2A9988]">{name}</span>
               </h1>
             </div>
             <div className="flex flex-row gap-3 lg:gap-5">
@@ -70,9 +72,9 @@ const Home = () => {
               </Link>
               <Link
                 href={"/editprofile"}
-                className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
+                className="relative w-8 text-lg text-white rounded-full sm:w-6 aspect-square"
               >
-                <Image fill src={"/user.png"} alt="closeMenu" />
+                <Image fill src={"/specialists.svg"} alt="closeMenu" />
               </Link>
             </div>
           </div>

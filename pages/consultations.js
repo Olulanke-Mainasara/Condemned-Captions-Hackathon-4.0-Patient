@@ -205,7 +205,7 @@ function Consultations() {
                 onClick={() => closeModal()}
                 className="relative w-6 text-lg text-black aspect-square"
               >
-                <Image fill src={"/close.svg"} alt="closeMenu" />
+                <Image fill src={"/closeCard.svg"} alt="closeMenu" />
               </button>
             </div>
 

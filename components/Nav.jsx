@@ -105,12 +105,22 @@ function Nav() {
               onClick={() => {
                 toggleDark();
               }}
-              className="relative flex items-center justify-center w-6 text-base text-black rounded-full aspect-square dark:text-white"
+              className="relative flex items-center justify-center w-10 text-base text-black bg-black rounded-full aspect-square dark:text-white"
             >
               {dark ? (
-                <Image fill src={"/light.svg"} alt="closeMenu" />
+                <Image
+                  width={24}
+                  height={24}
+                  src={"/light.svg"}
+                  alt="closeMenu"
+                />
               ) : (
-                <Image fill src={"/dark.svg"} alt="closeMenu" />
+                <Image
+                  width={20}
+                  height={20}
+                  src={"/dark.svg"}
+                  alt="closeMenu"
+                />
               )}
             </button>
 
@@ -119,7 +129,11 @@ function Nav() {
               onClick={closeMenu}
               className="relative w-6 text-lg dark:text-white aspect-square"
             >
-              <Image fill src={"/close.svg"} alt="closeMenu" />
+              {dark ? (
+                <Image fill src={"/close.svg"} alt="closeMenu" />
+              ) : (
+                <Image fill src={"/closeCard.svg"} alt="closeMenu" />
+              )}
             </button>
           </div>
 

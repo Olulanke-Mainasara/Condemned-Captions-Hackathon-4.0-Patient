@@ -33,12 +33,18 @@ export default function Home() {
               you can receive medical care from the comfort of your own home.
             </p>
             <div className="flex items-center justify-center w-full gap-4 mt-6 sm:mt-10">
-              <button className="p-2 w-1/2 bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-sm">
-                <Link href="/sign-up">Get Started</Link>
-              </button>
-              <button className="p-2 w-1/2 border border-[#2a9988] bg-[#2a9988] hover:bg-[#1C665B] dark:bg-black dark:hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-sm">
-                <Link href="/login">Login</Link>
-              </button>
+              <Link
+                href="/sign-up"
+                className="p-2 w-1/2 bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-[250px] text-center"
+              >
+                Get Started
+              </Link>
+              <Link
+                href="/login"
+                className="p-2 w-1/2 border border-[#2a9988] bg-[#2a9988] hover:bg-[#1C665B] dark:bg-black dark:hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-[250px] text-center"
+              >
+                Login
+              </Link>
             </div>
           </div>
           <div className="flex flex-col items-end w-full text-black dark:text-white">
@@ -47,7 +53,7 @@ export default function Home() {
                 Expert Care from Trusted Medical Professionals
               </h1>
               <br />
-              <p className="w-full max-w-lg text-lg text-center sm:font-normal">
+              <p className="w-full max-w-lg text-base text-center xl:text-lg sm:font-normal">
                 Our medical professionals undergo a rigorous screening and
                 selection process before they join our team. When you receive an
                 online medical consultation through our service, you can trust

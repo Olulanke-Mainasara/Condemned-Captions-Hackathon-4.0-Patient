@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+import useStore from "@/providers/appStore";
 
 const GetStarted = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ const GetStarted = () => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const { setName } = useStore();
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -18,7 +20,7 @@ const GetStarted = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        setName(firstName);
         window.location.href="/home"
         // ...
       })
