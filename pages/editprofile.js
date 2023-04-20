@@ -10,6 +10,8 @@ import {
   Upload,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import Nav from "@/components/Nav";
+import { states } from "@/data/arrays.js";
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -23,26 +25,7 @@ const Documents = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
-  const [fileList, setFileList] = useState([
-    // {
-    //   uid: '-1',
-    //   name: 'image.png',
-    //   status: 'done',
-    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    // },
-    // {
-    //   uid: '-xxx',
-    //   percent: 50,
-    //   name: 'image.png',
-    //   status: 'uploading',
-    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    // },
-    // {
-    //   uid: '-5',
-    //   name: 'image.png',
-    //   status: 'error',
-    // },
-  ]);
+  const [fileList, setFileList] = useState([]);
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
     if (!file.url && !file.preview) {
@@ -69,7 +52,7 @@ const Documents = () => {
     </div>
   );
   return (
-    <>
+    <div className="h-screen">
       <div className="rounded-xl w-full p-4 mt-8 bg-[#2A9988] text-white gap-20 flex flex-row items-center justify-between">
         <h1 className="w-full text-xl font-semibold">Profile Picture</h1>
         <Upload
@@ -102,15 +85,16 @@ const Documents = () => {
           src={previewImage}
         />
       </Modal>
-    </>
+      <Nav />
+    </div>
   );
 };
 
 const Basic = () => {
   return (
-    <div className="w-full py-4">
-      <Form className="flex flex-col w-full ">
-        <Form.Item label="Name" className="w-full">
+    <div className="w-full py-4 bg-white">
+      <Form className="flex flex-col w-full items-start justify-start">
+        <Form.Item label="Change Name" className="w-full">
           <Input className="w-full" />
         </Form.Item>
         <Form.Item label="Gender" className="w-full">
@@ -139,44 +123,23 @@ const Basic = () => {
           </Button>
         </Form.Item>
       </Form>
+      <Nav />
     </div>
   );
 };
 
-const options = [
-  {
-    value: "rivers",
-    label: "Rivers",
-    children: [
-      {
-        value: "port_harcourt",
-        label: "Port Harcourt",
-        children: [
-          {
-            value: "choba",
-            label: "Choba",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: "lagos",
-    label: "Lagos",
-    children: [
-      {
-        value: "ikeja",
-        label: "Ikeja",
-        children: [
-          {
-            value: "ojodu",
-            label: "Ojodu",
-          },
-        ],
-      },
-    ],
-  },
-];
+const options = states.map((item) => {
+  return {
+    value: item.state.toLowerCase(),
+    label: item.state,
+    children: item.lgas.map((item) => {
+      return {
+        value: item.toLowerCase(),
+        label: item,
+      };
+    }),
+  };
+});
 
 const items = [
   {
@@ -193,7 +156,7 @@ const items = [
 
 const editprofile = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full px-4 py-8 dark:text-white">
+    <div className="flex flex-col items-center justify-center w-full px-4 py-8 dark:text-white bg-white">
       <h1 className="w-full text-left font-bold text-2xl text-[#1C665B]">
         Edit Profile
       </h1>
