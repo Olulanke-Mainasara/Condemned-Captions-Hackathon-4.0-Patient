@@ -100,7 +100,7 @@ function Booking() {
             className="flex flex-col justify-center w-full max-w-xl p-4 py-5 h-fit md:p-8 gap-7 md:gap-10 xl:max-w-fit"
             onSubmit={handleSubmit}
           >
-            <div className="flex flex-col items-center w-full gap-10 text-black dark:text-white xl:flex-row">
+            <div className="flex flex-col items-center w-full gap-10 text-black dark:text-white xl:flex-row booking">
               <fieldset
                 className={`w-full flex flex-col xl:flex-row items-center gap-10 rounded-lg basis-3/4`}
               >

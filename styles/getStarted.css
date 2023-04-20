@@ -55,7 +55,6 @@ form {
 }
 
 ::placeholder {
-  font-weight: 600;
   font-size: 16px;
   color: white;
 }
@@ -124,7 +123,7 @@ input:focus {
     object-fit: cover;
   }
 
-  label {
+  .rectangle > label {
     color: white;
   }
 

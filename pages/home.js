@@ -72,9 +72,9 @@ const Home = () => {
               </Link>
               <Link
                 href={"/editprofile"}
-                className="relative w-8 text-lg text-white rounded-full sm:w-6 aspect-square"
+                className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
               >
-                <Image fill src={"/specialists.svg"} alt="closeMenu" />
+                <Image fill src={"/user.png"} alt="closeMenu" />
               </Link>
             </div>
           </div>
@@ -86,7 +86,7 @@ const Home = () => {
               onChange={(e) => onSearch(e)}
               prefix={prefix}
               placeholder="Search for Doctors"
-              className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
+              className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4 searchDoc"
             />
           </div>
           <div className="block w-full pt-20 md:hidden lg:hidden">
@@ -99,9 +99,12 @@ const Home = () => {
                   Eat fruits, Drink water, Exercise regularly, avoid smoking...
                 </p>
                 <br />
-                <button className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]">
-                  Learn more
-                </button>
+                <Link
+                  href={"/consultations"}
+                  className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]"
+                >
+                  Get consultation
+                </Link>
               </div>
               <Image
                 width={150}
@@ -123,9 +126,12 @@ const Home = () => {
                   avoid smoking...
                 </p>
                 <br />
-                <button className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]">
-                  Learn more
-                </button>
+                <Link
+                  href={"/consultations"}
+                  className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]"
+                >
+                  Get consultation
+                </Link>
               </div>
               <Image
                 width={200}
@@ -148,9 +154,12 @@ const Home = () => {
                   <li>• Exercise regularly everyday</li>
                   <li>• Avoid smoking...</li>
                 </ul>
-                <button className="px-8 py-2 rounded-xl text-2xl bg-[#3EE5CC]">
-                  Learn more
-                </button>
+                <Link
+                  href={"/consultations"}
+                  className="px-8 py-2 rounded-xl text-2xl bg-[#3EE5CC]"
+                >
+                  Get consultation
+                </Link>
               </div>
               <Image
                 width={400}
