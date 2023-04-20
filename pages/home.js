@@ -23,7 +23,6 @@ const Home = () => {
         return data.type.toLowerCase().includes(e.target.value.toLowerCase());
       });
     setValue(filterData);
-    console.log(value);
   };
 
   const prefix = (

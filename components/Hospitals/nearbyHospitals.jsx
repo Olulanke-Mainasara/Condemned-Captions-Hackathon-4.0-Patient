@@ -49,7 +49,7 @@ export default function NearbyHospitals() {
     <div
       className={`grid h-full grid-cols-1 overflow-scroll ${
         nearbyHospitals.length > 0 ? "xl:grid-cols-3 md:grid-cols-2" : ""
-      }  md:gap-6`}
+      }  md:gap-6 scrollbar-hide`}
     >
       {nearbyHospitals.length > 0 ? (
         nearbyHospitals.map((hospital) => {

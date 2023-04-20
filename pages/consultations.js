@@ -66,14 +66,14 @@ function Consultations() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex justify-center w-screen">
-        <div className="flex flex-col w-[95%] max-w-[1024px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
+        <div className="flex flex-col w-[95%] max-w-[1024px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden scrollbar-hide">
           <Nav />
 
           <h1 className="text-4xl text-center md:text-6xl text-[#2A9988]">
             Consultations
           </h1>
 
-          <div className="flex flex-col h-full mt-10 overflow-hidden ">
+          <div className="flex flex-col h-full mt-10 overflow-hidden scrollbar-hide">
             <div className="flex items-center justify-around text-center dark:text-white">
               <Button
                 cState={upcoming}
@@ -99,13 +99,13 @@ function Consultations() {
             </div>
 
             <div className="h-full">
-              <div className="relative h-full pt-10 pb-8 overflow-hidden">
+              <div className="relative h-full pt-10 pb-8 overflow-hidden scrollbar-hide">
                 <div
                   className={`w-full h-full ${
                     arrayUsed.length == 0
                       ? "flex flex-col items-center justify-center gap-10"
                       : "md:grid md:grid-cols-2 md:gap-4 xl:gap-10"
-                  } overflow-scroll`}
+                  } overflow-scroll scrollbar-hide`}
                 >
                   {arrayUsed.length > 0 ? (
                     arrayUsed.map((data) => {

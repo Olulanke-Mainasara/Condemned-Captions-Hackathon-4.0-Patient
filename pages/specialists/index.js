@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
+import { Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
 function Specialists() {
-  const dummyData = specialistsDummy.specialists;
+  const [value, setValue] = useState(specialistsDummy.specialists);
+
+  const onSearch = (e) => {
+    const filterData = specialistsDummy.specialists
+      .map((data) => data)
+      .filter(function (data) {
+        return data.type.toLowerCase().includes(e.target.value.toLowerCase());
+      });
+    setValue(filterData);
+  };
+
+  const prefix = (
+    <SearchOutlined
+      onChange={(e) => onSearch(e)}
+      style={{
+        fontSize: 16,
+        cursor: "pointer",
+        marginRight: "5px",
+      }}
+    />
+  );
 
   return (
     <>
@@ -16,8 +38,8 @@ function Specialists() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex items-center justify-center w-screen">
-        <div className="flex flex-col items-center justify-center h-screen gap-10 pt-5 pb-10 overflow-hidden xl:pt-24 xl:w-1/2">
+      <main className="flex items-start justify-center w-screen">
+        <div className="flex flex-col items-center justify-start h-screen gap-10 pt-5 pb-10 scrollbar-hide overflow-hidden xl:pt-24 xl:w-1/2">
           <Nav />
 
           <div className="w-full px-3 md:px-0">
@@ -25,10 +47,20 @@ function Specialists() {
               Specialists
             </h1>
           </div>
-
-          <div className="w-full overflow-hidden">
-            <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll dark:text-white md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
-              {dummyData.map((data) => {
+          <div className="flex flex-row items-center justify-center w-full">
+            <Input
+              enterButton="Search"
+              size="large"
+              onChange={(e) => onSearch(e)}
+              prefix={prefix}
+              placeholder="Search for Doctors"
+              className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4 searchDoc"
+            />
+          </div>
+          <br />
+          <div className="w-full overflow-hidden scrollbar-hide">
+            <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll scrollbar-hide dark:text-white md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
+              {value.map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
                     <div className="flex flex-col items-center justify-center mb-8">

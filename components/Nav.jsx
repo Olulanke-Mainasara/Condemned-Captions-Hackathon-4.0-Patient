@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { EditOutlined } from "@ant-design/icons";
 import useNavigationBar from "./hooks/useNavigationBar";
 import useStore from "@/providers/appStore";
 
@@ -92,12 +93,12 @@ function Nav() {
         <div
           className={`flex flex-col gap-6 px-6 items-start justify-center text-base absolute bottom-0 h-screen w-full bg-[#F8FFFE] dark:bg-black xl:hidden duration-500 ${navMenu}`}
         >
-          <div className="flex items-center justify-between w-full mt-24">
+          <div className="flex items-center justify-between w-full mt-12">
             <Link
               href={"/editprofile"}
-              className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
+              className="flex flex-row items-center gap-2 px-16 py-2 text-lg text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
             >
-              <Image fill src={"/user.png"} alt="closeMenu" />
+              <EditOutlined /> Edit Profile
             </Link>
 
             <button
@@ -137,13 +138,13 @@ function Nav() {
             </button>
           </div>
 
-          <div className="relative w-full h-full pt-10 pb-8 overflow-hidden">
+          <div className="relative w-full h-full pt-10 pb-8 overflow-hidden scrollbar-hide">
             <div
               className={`w-full h-full ${
                 upcomingItems.length == 0
                   ? "flex flex-col items-center justify-center gap-10"
                   : "md:grid md:grid-cols-2 md:gap-4 xl:gap-10"
-              } overflow-scroll`}
+              } overflow-scroll scrollbar-hide`}
             >
               {upcomingItems.length > 0 ? (
                 upcomingItems.map((data) => {
@@ -215,12 +216,11 @@ function Nav() {
                 </div>
                 Book an Appointment
               </Link>
+              <button className="flex items-center justify-center gap-2 px-24 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-12 left-0 mx-auto">
+                Logout
+              </button>
             </div>
           </div>
-
-          <button className="w-1/2 flex items-center justify-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg mb-5 mx-auto">
-            Logout
-          </button>
         </div>
       </div>
     </nav>

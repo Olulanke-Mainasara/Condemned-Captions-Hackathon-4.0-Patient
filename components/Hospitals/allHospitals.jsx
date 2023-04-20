@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AllHospitals({ allHospitals }) {
   return (
-    <div className="grid h-full grid-cols-1 overflow-scroll xl:grid-cols-3 md:grid-cols-2 md:gap-6">
+    <div className="grid h-full grid-cols-1 overflow-scroll xl:grid-cols-3 md:grid-cols-2 md:gap-6 scrollbar-hide">
       {allHospitals &&
         allHospitals.map((hospital) => {
           return (
