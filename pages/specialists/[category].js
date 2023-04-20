@@ -4,11 +4,13 @@ import React from "react";
 import Nav from "@/components/Nav";
 import doctorsDummyData from "/data/doctorsDummyData.json";
 import specialistsDummy from "/data/specialistsDummyData.json";
+import { useRouter } from "next/router";
 
 const specialistsArray = specialistsDummy.specialists;
 
 export default function Category({ specialist }) {
   const doctorsArray = doctorsDummyData.doctors;
+  const router = useRouter();
 
   return (
     <>
@@ -21,6 +23,15 @@ export default function Category({ specialist }) {
       <main className="flex justify-center w-screen">
         <div className="flex flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden">
           <Nav />
+
+          <div>
+            <button
+              className="px-1 dark:text-white"
+              onClick={() => router.back()}
+            >
+              &larr; Back
+            </button>
+          </div>
 
           <h1 className="text-4xl text-center md:text-6xl text-[#2A9988]">
             {specialist.type + "s"}
