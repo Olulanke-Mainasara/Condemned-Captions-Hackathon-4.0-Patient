@@ -10,17 +10,17 @@ import Nav from "@/components/Nav";
 import useStore from "@/providers/appStore";
 
 const Home = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(specialistsDummy.specialists);
   const { name } = useStore();
 
-  const dummyData = specialistsDummy.specialists;
+  // const dummyData = specialistsDummy.specialists
   const doctorsArray = doctorsDummyData.doctors;
 
   const onSearch = (e) => {
-    const filterData = dummyData
-      .map((data) => data.type)
-      .filter(function (type) {
-        return type.includes(e.target.value);
+    const filterData = specialistsDummy.specialists
+      .map((data) => data)
+      .filter(function (data) {
+        return data.type.toLowerCase().includes(e.target.value.toLowerCase());
       });
     setValue(filterData);
     console.log(value);
@@ -174,7 +174,7 @@ const Home = () => {
               Find your Doctor
             </h1>
             <div className="grid grid-cols-4 text-black gap-x-2 gap-y-6 h-fit lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10 dark:text-white">
-              {dummyData.slice(0, 7).map((data) => {
+              {value.slice(0, 7).map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
                     <div className="flex flex-col items-center justify-center">
