@@ -208,15 +208,15 @@ function Nav() {
                 </>
               )}
               <Link
-                className="flex items-center gap-2 text-sm px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 right-0"
+                className="flex items-center justify-center gap-2 w-1/2 sm:w-1/4 text-sm py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 right-0"
                 href={"/booking"}
               >
                 <div className="relative w-5 h-5">
                   <Image src={"/cross.svg"} fill alt="placeholderImg" />
                 </div>
-                Book an Appointment
+                Book Appointment
               </Link>
-              <button className="flex items-center justify-center text-sm gap-2 sm:px-24 px-8 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
+              <button className="flex w-1/2 sm:w-1/4 items-center justify-center text-sm gap-2 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
                 Logout
               </button>
             </div>
