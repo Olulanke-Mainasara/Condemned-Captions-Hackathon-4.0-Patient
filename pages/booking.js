@@ -292,7 +292,7 @@ function Booking() {
             </div>
 
             <button
-              className="bg-[#1C665B] w-4/5 py-3 rounded-lg text-white max-w-md"
+              className="bg-[#2a9988] hover:bg-[#1C665B] w-4/5 py-3 rounded-lg text-white max-w-md"
               type="submit"
             >
               Confirm appointment

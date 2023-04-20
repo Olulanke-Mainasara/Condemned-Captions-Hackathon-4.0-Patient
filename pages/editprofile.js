@@ -109,7 +109,7 @@ const Documents = () => {
 const Basic = () => {
   return (
     <div className="w-full py-4">
-      <Form className="w-full flex flex-col ">
+      <Form className="flex flex-col w-full ">
         <Form.Item label="Name" className="w-full">
           <Input className="w-full" />
         </Form.Item>
@@ -193,7 +193,7 @@ const items = [
 
 const editprofile = () => {
   return (
-    <div className="w-full px-4 py-8 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-full px-4 py-8 dark:text-white">
       <h1 className="w-full text-left font-bold text-2xl text-[#1C665B]">
         Edit Profile
       </h1>

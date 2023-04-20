@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { Input, Rate } from "antd";
+import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
@@ -43,12 +43,12 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center justify-start h-full w-full py-8">
-        <div className="w-full h-full flex flex-col items-center justify-start px-3 md:px-8 lg:px-12">
+      <div className="flex flex-col items-center justify-start w-full min-h-screen py-8 xl:pb-0 xl:pt-24">
+        <div className="flex flex-col items-center justify-start w-full h-full px-3 md:px-8 lg:px-12">
           <div className="flex flex-row items-center justify-between w-full">
             <div>
-              <h1 className="text-xl font-semibold sm:text-3xl text-[#2A9988]">
-                Hi, Anna.
+              <h1 className="text-xl font-semibold text-white sm:text-3xl">
+                Hi, <span className="text-[#2A9988]">Anna</span>
               </h1>
             </div>
             <div className="flex flex-row gap-3 lg:gap-5">
@@ -59,20 +59,21 @@ const Home = () => {
                 height={20}
                 className="cursor-pointer"
               />
-              <Image
-                src="/Notification.svg"
-                alt="wallet"
-                height={15}
-                width={15}
-                className="cursor-pointer"
-              />
-              <Image
-                src="/user.png"
-                alt="user"
-                width={30}
-                height={30}
-                className="cursor-pointer"
-              />
+              <Link href={"/consultations"} className="flex items-center">
+                <Image
+                  src="/Notification.svg"
+                  alt="wallet"
+                  height={20}
+                  width={20}
+                  className="cursor-pointer"
+                />
+              </Link>
+              <Link
+                href={"/editprofile"}
+                className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
+              >
+                <Image fill src={"/user.png"} alt="closeMenu" />
+              </Link>
             </div>
           </div>
           <br />
@@ -83,17 +84,17 @@ const Home = () => {
               onChange={(e) => onSearch(e)}
               prefix={prefix}
               placeholder="Search for Doctors"
-              className="w-full p-0 px-4 text-xl border border-green-600 font-semibold rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
+              className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
             />
           </div>
-          <div className="w-full block md:hidden lg:hidden pt-20">
+          <div className="block w-full pt-20 md:hidden lg:hidden">
             <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
               <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
                 <h1 className="text-lg font-light">
                   Learn How to Stay Healthy From these Tips!
                 </h1>
                 <p className="text-xs font-light">
-                  Eat fruits, Drink water, Excercise regularly, avoid smoking...
+                  Eat fruits, Drink water, Exercise regularly, avoid smoking...
                 </p>
                 <br />
                 <button className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]">
@@ -103,21 +104,21 @@ const Home = () => {
               <Image
                 width={150}
                 height={250}
-                className="overflow-visible absolute bottom-0 right-0 z-10"
+                className="absolute bottom-0 right-0 z-10 overflow-visible"
                 src="/doctor.png"
                 alt="doctor"
               />
             </div>
           </div>
-          <div className="hidden md:block lg:hidden w-full pt-20">
+          <div className="hidden w-full pt-20 md:block lg:hidden">
             <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
               <div className="flex flex-col items-start justify-start w-2/3 px-4 py-5">
                 <h1 className="text-2xl font-semibold">
                   Learn how to stay Healthy from these tips!
                 </h1>
                 <p className="text-xl font-light">
-                  Eat fruits, <br /> Drink water, <br /> Excercise regularly,
-                  and avoid smoking...
+                  Eat fruits, <br /> Drink water, <br /> Exercise regularly, and
+                  avoid smoking...
                 </p>
                 <br />
                 <button className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]">
@@ -127,13 +128,13 @@ const Home = () => {
               <Image
                 width={200}
                 height={200}
-                className="overflow-visible absolute bottom-0 right-0 z-10"
+                className="absolute bottom-0 right-0 z-10 overflow-visible"
                 src="/doctor.png"
                 alt="doctor"
               />
             </div>
           </div>
-          <div className="hidden md:hidden lg:flex w-full pt-20">
+          <div className="hidden w-full pt-20 md:hidden lg:flex">
             <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
               <div className="flex flex-col items-start justify-start w-1/2 gap-5 py-8 pl-10">
                 <h1 className="text-5xl font-semibold">
@@ -142,7 +143,7 @@ const Home = () => {
                 <ul className="text-2xl ">
                   <li>• Eat plenty of fruits daily</li>
                   <li>• Drink enough water daily</li>
-                  <li>• Excercise regularly everyday</li>
+                  <li>• Exercise regularly everyday</li>
                   <li>• Avoid smoking...</li>
                 </ul>
                 <button className="px-8 py-2 rounded-xl text-2xl bg-[#3EE5CC]">
@@ -152,7 +153,7 @@ const Home = () => {
               <Image
                 width={400}
                 height={50}
-                className="overflow-visible absolute bottom-0 right-40 z-20"
+                className="absolute bottom-0 z-20 overflow-visible right-40"
                 src="/doctorLg.png"
                 alt="doctor"
               />
@@ -167,10 +168,10 @@ const Home = () => {
           </div>
           <br />
           <div className="flex flex-col w-full gap-3 mt-0 lg:gap-10 lg:mt-10">
-            <h1 className="font-bold md:text-2xl lg:text-4xl text-[#2A9988] text-center">
+            <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl text-[#2A9988] text-center">
               Find your Doctor
             </h1>
-            <div className="grid h-full grid-cols-4 gap-2 overflow-scroll md:grid-cols-4 lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid grid-cols-4 text-black gap-x-2 gap-y-6 h-fit lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10 dark:text-white">
               {dummyData.slice(0, 7).map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
@@ -184,11 +185,13 @@ const Home = () => {
                 );
               })}
               {
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg w-14 h-14 lg:w-36 lg:h-32">
+                <div className="flex flex-col items-center justify-between pt-2">
+                  <Link
+                    href={"/specialists"}
+                    className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white dark:text-black w-14 aspect-square lg:w-24"
+                  >
                     +
-                  </div>
-                  <br />
+                  </Link>
                   <p className="text-xs lg:text-lg">More</p>
                 </div>
               }
@@ -196,18 +199,21 @@ const Home = () => {
           </div>
         </div>
         <br />
-        <div className="w-full flex flex-col items-start justify-center bg-[#1C665B] text-white px-4 overflow-auto">
+        <div className="w-full flex flex-col items-start justify-center bg-[#2A9988] text-white px-4 overflow-auto grow">
           <div className="flex flex-row items-center justify-between w-full py-8 overflow-hidden">
             <h1 className="font-semibold md:text-2xl lg:text-4xl">
               Our Doctors
             </h1>
-            <a className="text-xs font-light cursor-pointer md:text-xl lg:text-xl">
+            <Link
+              href={"/specialists"}
+              className="text-sm font-light cursor-pointer md:text-xl lg:text-xl"
+            >
               view more
-            </a>
+            </Link>
           </div>
           <div className="w-full overflow-auto">
-            <div className="flex gap-5 pb-12 overflow-x-auto w-fit">
-              {doctorsArray.slice(0, 3).map((data) => {
+            <div className="flex gap-5 pb-16 overflow-x-auto w-fit">
+              {doctorsArray.slice(0, 7).map((data) => {
                 return (
                   <div
                     key={data.id}
@@ -222,9 +228,8 @@ const Home = () => {
                       />
                     </div>
                     <div className="flex flex-col items-start justify-center w-3/5 text-black">
-                      <h1>Dr. Sayall Olawale</h1>
+                      <h1>Dr. Sayali Olawale</h1>
                       <p>Cardiologist</p>
-                      <Rate disabled allowClear allowHalf defaultValue={3.5} />
                     </div>
                   </div>
                 );
