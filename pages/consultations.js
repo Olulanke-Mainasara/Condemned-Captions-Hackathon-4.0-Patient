@@ -180,7 +180,7 @@ function Consultations() {
                     <div className="relative w-5 h-5">
                       <Image src={"/cross.svg"} fill alt="placeholderImg" />
                     </div>
-                    Book an Appointment
+                    Book Appointment
                   </Link>
                 </div>
               </div>
