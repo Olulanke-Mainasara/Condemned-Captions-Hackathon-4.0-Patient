@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Splash from "@/components/Splash-Screen/Splash";
-import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
@@ -15,7 +14,7 @@ export default function Home() {
       </Head>
       <main>
         <Splash />
-        <section className="flex flex-col items-center justify-start w-full h-full gap-10 pt-12 lg:pt-28">
+        <section className="flex flex-col items-center justify-start w-full min-h-screen gap-12 pt-12 xl:gap-10 lg:pt-8">
           <div className="flex flex-col items-center w-full px-20 sm:px-4">
             <Image
               src={"/landingPage.svg"}
@@ -25,24 +24,30 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col items-center w-full px-4 text-black dark:text-white sm:px-20">
-            <h1 className="w-full text-4xl font-bold text-center">
+            <h1 className="w-full text-4xl text-center">
               Get Medical Consultation from Home
             </h1>
             <br />
-            <p className="w-full max-w-lg text-xl text-center">
+            <p className="w-full max-w-lg text-lg text-center">
               Welcome to <b className="text-[#2A9988]">NextGen Doctors</b> where
               you can receive medical care from the comfort of your own home.
             </p>
-            <button className="p-2 w-1/2 bg-[#2a9988] hover:bg-[#1C665B] duration-500 mt-6 sm:mt-10 rounded-md text-white font-semibold text-xl max-w-sm">
-              <Link href="/sign-up">Get Started</Link>
-            </button>
+            <div className="flex items-center justify-center w-full gap-4 mt-6 sm:mt-10">
+              <button className="p-2 w-1/2 bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-sm">
+                <Link href="/sign-up">Get Started</Link>
+              </button>
+              <button className="p-2 w-1/2 border border-[#2a9988] bg-[#2a9988] hover:bg-[#1C665B] dark:bg-black dark:hover:bg-[#1C665B] duration-500 rounded-md text-white text-xl max-w-sm">
+                <Link href="/login">Login</Link>
+              </button>
+            </div>
           </div>
           <div className="flex flex-col items-end w-full text-black dark:text-white">
             <div className="flex flex-col items-center w-full px-4 sm:px-20">
-              <h1 className="w-full text-3xl font-bold text-center">
+              <h1 className="w-full text-3xl text-center">
                 Expert Care from Trusted Medical Professionals
               </h1>
-              <p className="w-full max-w-lg text-base font-light text-center sm:font-normal">
+              <br />
+              <p className="w-full max-w-lg text-lg text-center sm:font-normal">
                 Our medical professionals undergo a rigorous screening and
                 selection process before they join our team. When you receive an
                 online medical consultation through our service, you can trust
@@ -51,7 +56,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="w-full flex flex-col items-end pb-20 sm:pb-24 bg-[#2A9988] text-white py-10 overflow-hidden relative">
+          <div className="w-full flex flex-col items-end pb-20 sm:pb-24 bg-[#2A9988] text-white py-10 overflow-hidden relative grow">
             <Image
               src={"/stetoscope.svg"}
               width={600}
