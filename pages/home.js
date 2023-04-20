@@ -37,12 +37,12 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex flex-col items-center justify-start w-full h-full py-8">
+      <div className="flex flex-col items-center justify-start w-full min-h-screen py-8 xl:pb-0 xl:pt-24">
         <div className="flex flex-col items-center justify-start w-full h-full px-3 md:px-8 lg:px-12">
           <div className="flex flex-row items-center justify-between w-full">
             <div>
-              <h1 className="text-xl font-semibold sm:text-3xl text-[#2A9988]">
-                Hi, Anna.
+              <h1 className="text-xl font-semibold text-white sm:text-3xl">
+                Hi, <span className="text-[#2A9988]">Anna</span>
               </h1>
             </div>
             <div className="flex flex-row gap-3 lg:gap-5">
@@ -53,13 +53,15 @@ const Home = () => {
                 height={20}
                 className="cursor-pointer"
               />
-              <Image
-                src="/Notification.svg"
-                alt="wallet"
-                height={15}
-                width={15}
-                className="cursor-pointer"
-              />
+              <Link href={"/consultations"} className="flex items-center">
+                <Image
+                  src="/Notification.svg"
+                  alt="wallet"
+                  height={20}
+                  width={20}
+                  className="cursor-pointer"
+                />
+              </Link>
               <Link
                 href={"/editprofile"}
                 className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
@@ -76,7 +78,7 @@ const Home = () => {
               onChange={(e) => setValue(e.currentTarget.value)}
               prefix={prefix}
               placeholder="Search for Doctors"
-              className="w-full p-0 px-4 text-xl font-semibold border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
+              className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4"
             />
           </div>
           <div className="block w-full pt-20 md:hidden lg:hidden">
@@ -160,10 +162,10 @@ const Home = () => {
           </div>
           <br />
           <div className="flex flex-col w-full gap-3 mt-0 lg:gap-10 lg:mt-10">
-            <h1 className="font-bold md:text-2xl lg:text-4xl text-[#2A9988] text-center">
+            <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl text-[#2A9988] text-center">
               Find your Doctor
             </h1>
-            <div className="grid h-full grid-cols-4 gap-2 overflow-scroll text-black md:grid-cols-4 lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10 dark:text-white">
+            <div className="grid grid-cols-4 text-black gap-x-2 gap-y-6 h-fit lg:grid-cols-6 md:gap-6 lg:gap-8 xl:gap-10 dark:text-white">
               {dummyData.slice(0, 7).map((data) => {
                 return (
                   <Link href={data.link} key={data.id}>
@@ -177,14 +179,13 @@ const Home = () => {
                 );
               })}
               {
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-between pt-2">
                   <Link
                     href={"/specialists"}
-                    className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white dark:text-black w-14 h-14 lg:w-36 lg:h-32"
+                    className="flex flex-col items-center justify-center max-w-full text-2xl font-bold rounded-full shadow-lg dark:bg-white dark:text-black w-14 aspect-square lg:w-24"
                   >
                     +
                   </Link>
-                  <br />
                   <p className="text-xs lg:text-lg">More</p>
                 </div>
               }
@@ -192,21 +193,21 @@ const Home = () => {
           </div>
         </div>
         <br />
-        <div className="w-full flex flex-col items-start justify-center bg-[#1C665B] text-white px-4 overflow-auto">
+        <div className="w-full flex flex-col items-start justify-center bg-[#2A9988] text-white px-4 overflow-auto grow">
           <div className="flex flex-row items-center justify-between w-full py-8 overflow-hidden">
             <h1 className="font-semibold md:text-2xl lg:text-4xl">
               Our Doctors
             </h1>
             <Link
               href={"/specialists"}
-              className="text-xs font-light cursor-pointer md:text-xl lg:text-xl"
+              className="text-sm font-light cursor-pointer md:text-xl lg:text-xl"
             >
               view more
             </Link>
           </div>
           <div className="w-full overflow-auto">
-            <div className="flex gap-5 pb-12 overflow-x-auto w-fit">
-              {doctorsArray.slice(0, 3).map((data) => {
+            <div className="flex gap-5 pb-16 overflow-x-auto w-fit">
+              {doctorsArray.slice(0, 7).map((data) => {
                 return (
                   <div
                     key={data.id}
