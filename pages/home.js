@@ -53,7 +53,7 @@ const Home = () => {
                 Hi, <span className="text-[#2A9988]">{name}</span>
               </h1>
             </div>
-            <div className="flex flex-row gap-3 lg:gap-5">
+            <div className="flex flex-row gap-5 lg:gap-5">
               <Image
                 src="/WalletIcon.svg"
                 alt="notification"
