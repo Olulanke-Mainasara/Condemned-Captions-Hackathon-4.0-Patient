@@ -8,6 +8,7 @@ import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
 import Nav from "@/components/Nav";
 import useStore from "@/providers/appStore";
+import { EditOutlined } from "@ant-design/icons";
 
 const Home = () => {
   const [value, setValue] = useState(specialistsDummy.specialists);
@@ -74,6 +75,12 @@ const Home = () => {
                 className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
               >
                 <Image fill src={"/user.png"} alt="closeMenu" />
+              </Link>
+              <Link
+                href={"/editprofile"}
+                className="items-center gap-2 sm:px-16 px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-lg xl:flex hidden"
+              >
+                <EditOutlined /> Edit Profile
               </Link>
             </div>
           </div>

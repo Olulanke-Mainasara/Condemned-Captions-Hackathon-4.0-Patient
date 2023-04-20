@@ -39,7 +39,7 @@ function Specialists() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex items-start justify-center w-screen">
-        <div className="flex flex-col items-center justify-start h-screen gap-10 pt-5 pb-10 scrollbar-hide overflow-hidden xl:pt-24 xl:w-1/2">
+        <div className="flex flex-col items-center justify-start h-screen gap-10 pt-5 pb-10 overflow-hidden scrollbar-hide xl:pt-24 xl:w-1/2">
           <Nav />
 
           <div className="w-full px-3 md:px-0">
@@ -57,7 +57,6 @@ function Specialists() {
               className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4 searchDoc"
             />
           </div>
-          <br />
           <div className="w-full overflow-hidden scrollbar-hide">
             <div className="grid h-full grid-cols-3 gap-3 pb-8 overflow-scroll scrollbar-hide dark:text-white md:grid-cols-4 md:gap-6 lg:gap-8 xl:gap-10">
               {value.map((data) => {

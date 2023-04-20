@@ -26,10 +26,10 @@ export default function Category({ specialist }) {
 
           <div>
             <button
-              className="px-1 dark:text-white"
+              className="px-1 text-black dark:text-white"
               onClick={() => router.back()}
             >
-              &larr; Back
+              &larr; back
             </button>
           </div>
 
