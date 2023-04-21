@@ -1,9 +1,10 @@
-import auth from "@/firebase/client";
+import {auth, db} from "@/firebase/client";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import useStore from "@/providers/appStore";
+import { setDoc, doc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
 const GetStarted = () => {
   const [email, setEmail] = useState("");
@@ -12,21 +13,32 @@ const GetStarted = () => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const { setName } = useStore();
+  const router = useRouter();
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        setName(firstName);
-        window.location.href="/home"
-        // ...
-      })
-      .catch((error) => {
-        setErrorMessage(error.message)
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      const uid = user.uid;
+
+      await setDoc(doc(db, "users", uid), {
+        firstname: firstName,
+        lastname: lastName,
+        phoneno: phoneNumber,
       });
+
+      router.push({
+        pathname: "/home",
+        query: { firstName: firstName },
+      });
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
