@@ -4,6 +4,7 @@ import Image from "next/image";
 import { EditOutlined } from "@ant-design/icons";
 import useNavigationBar from "./hooks/useNavigationBar";
 import useStore from "@/providers/appStore";
+import { auth } from "@/firebase/client";
 
 function Nav() {
   const [navMenu, openMenu, closeMenu] = useNavigationBar();
@@ -35,6 +36,15 @@ function Nav() {
       label: "Hospitals",
     },
   ];
+
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      window.location.href = "/login";
+    } catch (error) {
+      alert("Error signing out", error);
+    }
+  };
 
   return (
     <nav
@@ -194,7 +204,7 @@ function Nav() {
                 })
               ) : (
                 <>
-                  <p className="dark:text-white md:text-xl">
+                  <p className="text-black dark:text-white md:text-xl">
                     No consultation(s) found
                   </p>
                   <div className="relative w-40 md:w-48 aspect-square">
@@ -207,19 +217,25 @@ function Nav() {
                   </div>
                 </>
               )}
-              <Link
-                className="flex items-center justify-center gap-2 w-1/2 sm:w-1/4 text-sm py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 right-0"
-                href={"/booking"}
-              >
-                <div className="relative w-5 h-5">
-                  <Image src={"/cross.svg"} fill alt="placeholderImg" />
-                </div>
-                Book Appointment
-              </Link>
-              <button className="flex w-1/2 sm:w-1/4 items-center justify-center text-sm gap-2 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg absolute bottom-32 left-0 mx-auto">
-                Logout
-              </button>
             </div>
+          </div>
+
+          <div className="flex justify-center w-full gap-6 mb-8">
+            <Link
+              className="flex items-center justify-center gap-2 w-1/2 sm:w-1/4 text-sm py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg"
+              href={"/booking"}
+            >
+              <div className="relative w-5 h-5">
+                <Image src={"/cross.svg"} fill alt="placeholderImg" />
+              </div>
+              Book Appointment
+            </Link>
+            <button
+              onClick={() => handleSignOut()}
+              className="flex w-1/2 sm:w-1/4 items-center justify-center text-sm gap-2 py-3 bg-[#2a9988] hover:bg-[#1C665B] text-white rounded-lg shadow-lg"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </div>

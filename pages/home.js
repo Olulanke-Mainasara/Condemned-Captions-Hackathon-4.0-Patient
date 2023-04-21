@@ -7,11 +7,14 @@ import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
 import Nav from "@/components/Nav";
-import useStore from "@/providers/appStore";
+import { EditOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [value, setValue] = useState(specialistsDummy.specialists);
-  const { name } = useStore();
+  const router = useRouter();
+  const firstName = router.query.firstName;
+
 
   // const dummyData = specialistsDummy.specialists
   const doctorsArray = doctorsDummyData.doctors;
@@ -49,7 +52,7 @@ const Home = () => {
           <div className="flex flex-row items-center justify-between w-full">
             <div>
               <h1 className="text-xl font-semibold dark:text-white sm:text-3xl">
-                Hi, <span className="text-[#2A9988]">{name}</span>
+                Hi, <span className="text-[#2A9988]">{firstName}</span>
               </h1>
             </div>
             <div className="flex flex-row gap-5 lg:gap-5">
@@ -74,6 +77,12 @@ const Home = () => {
                 className="relative w-10 text-lg text-white rounded-full sm:w-6 aspect-square xl:hidden"
               >
                 <Image fill src={"/user.png"} alt="closeMenu" />
+              </Link>
+              <Link
+                href={"/editprofile"}
+                className="items-center gap-2 sm:px-16 px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-lg xl:flex hidden"
+              >
+                <EditOutlined /> Edit Profile
               </Link>
             </div>
           </div>

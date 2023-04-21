@@ -1,26 +1,44 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import auth from "@/firebase/client";
+import { auth, db } from "@/firebase/client";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
-const GetStarted = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const router = useRouter();
 
   const handleSignIn = async (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        window.location.href = "/home";
-        // ...
-      })
-      .catch((error) => {
-        setErrorMessage(error.message)
-      });
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      const uid = user.uid;
+
+      const userDoc = await getDoc(doc(db, "users", uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        
+        router.push({
+          pathname: "/home",
+          query: { firstName: userData.firstname },
+        });
+      } else {
+        router.push({
+          pathname: "/sign-up",
+        });;
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -76,4 +94,4 @@ const GetStarted = () => {
   );
 };
 
-export default GetStarted;
+export default Login;
