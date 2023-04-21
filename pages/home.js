@@ -231,6 +231,7 @@ const Home = () => {
                   >
                     <div className="flex flex-col items-center justify-center w-2/5 p-2">
                       <Image
+                        className="rounded-full"
                         width={80}
                         height={80}
                         alt="docPic"
