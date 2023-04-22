@@ -411,7 +411,7 @@ function Booking() {
               appointmentTime={appointmentTime}
               qrString={fname + lname + appointmentTime}
               complaint={complaint}
-              gender={gender}
+              gender={selectedGender}
             />
             <h1 className="text-sm text-center">
               Download your Ticket and Keep it safe. You will present it to the
