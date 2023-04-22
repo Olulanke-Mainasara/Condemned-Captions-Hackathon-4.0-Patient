@@ -190,7 +190,7 @@ const Home = () => {
           {searchField === "" ? (
             <div className="w-full hidden md:block lg:hidden">
               <Carousel className="h-full w-full" autoplay pauseOnHover>
-                <div className="hidden w-full pt-20 px-1 md:block lg:hidden">
+                <div className="hidden w-full pt-20 px-2 md:block lg:hidden">
                   <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
                     <div className="flex flex-col items-start justify-start w-2/3 pl-8 pr-0 py-5">
                       <h1 className="text-2xl font-semibold">
@@ -219,7 +219,7 @@ const Home = () => {
                     />
                   </div>
                 </div>
-                <div className="hidden w-full pt-20 px-1 md:block lg:hidden">
+                <div className="hidden w-full pt-20 px-2 md:block lg:hidden">
                   <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
                     <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
                       <h1 className="text-2xl font-semibold">
@@ -249,7 +249,7 @@ const Home = () => {
                     />
                   </div>
                 </div>
-                <div className="hidden w-full pt-20 px-1 md:block lg:hidden">
+                <div className="hidden w-full pt-20 px-2 md:block lg:hidden">
                   <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
                     <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
                       <h1 className="text-2xl font-semibold">
