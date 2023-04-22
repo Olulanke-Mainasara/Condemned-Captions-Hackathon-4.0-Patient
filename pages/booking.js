@@ -56,9 +56,8 @@ function Booking() {
         "/doc5.jpg",
         "/doc6.jpg",
         "/doc7.jpg",
-        "/doc8.jpg",
+        "/doc8.svg",
         "/doc9.svg",
-        "/doc10.svg",
       ];
       const randomIndex = Math.floor(Math.random() * docs.length);
       const randomPic = docs[randomIndex];
@@ -94,6 +93,7 @@ function Booking() {
         complaint: complaint,
         appointmentDate: appointmentDate,
         appointmentTime: appointmentTime,
+        qr_string: "",
       };
 
       try {
