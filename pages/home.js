@@ -12,21 +12,15 @@ import { useRouter } from "next/router";
 
 const Home = () => {
   const [value, setValue] = useState(specialistsDummy.specialists);
+  const [searchField, setSearchField] = useState("");
   const router = useRouter();
   const firstName = router.query.firstName;
-
-  const contentStyle = {
-    height: "160px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-  };
 
   // const dummyData = specialistsDummy.specialists
   const doctorsArray = doctorsDummyData.doctors;
 
   const onSearch = (e) => {
+    setSearchField(e.target.value);
     const filterData = specialistsDummy.specialists
       .map((data) => data)
       .filter(function (data) {
@@ -104,183 +98,192 @@ const Home = () => {
               className="w-full px-4 text-xl border border-green-600 rounded-lg lg:w-2/3 md:w-2/3 sm:p-4 sm:px-4 searchDoc"
             />
           </div>
-          <div className="w-full block md:hidden lg:hidden">
-            <Carousel className="h-full w-full" pauseOnHover autoplay>
-              <div className="block w-full pt-20 md:hidden lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
-                    <h1 className="text-lg font-light">
-                      Learn How to Stay Healthy From these Tips!
-                    </h1>
-                    <p className="text-xs font-light">
-                      Eat fruits, Drink water, Exercise regularly, avoid
-                      smoking...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
-                  </div>
-                  <Image
-                    width={150}
-                    height={250}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctor.png"
-                    alt="doctor"
-                  />
-                </div>
-              </div>
-              <div className="block w-full pt-20 md:hidden lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
-                    <h1 className="text-lg font-light">
-                      Learn How to Manage Stress in Your Daily Life!
-                    </h1>
-                    <p className="text-xs font-light">
-                      Practice meditation, Exercise regularly, Take breaks,
-                      Practice self-care...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
-                  </div>
-                  <Image
-                    width={175}
-                    height={250}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctorLg.png"
-                    alt="doctor"
-                  />
-                </div>
-              </div>
-              <div className="block w-full pt-20 md:hidden lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
-                    <h1 className="text-lg font-light">
-                      Learn these Tips for a Healthy and Balanced Diet!
-                    </h1>
-                    <p className="text-xs font-light">
-                      Eat whole grains, Drink water, Limit processed foods,
-                      Limit sugary foods...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
-                  </div>
-                  <Image
-                    width={160}
-                    height={250}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctorWomanLg.png"
-                    alt="doctor"
-                  />
-                </div>
-              </div>
-            </Carousel>
-          </div>
-          <div className="w-full hidden md:block lg:hidden">
-            <Carousel className="h-full w-full" autoplay pauseOnHover>
-              <div className="hidden w-full pt-20 md:block lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 pl-8 pr-0 py-5">
-                    <h1 className="text-2xl font-semibold">
-                      Learn how to stay Healthy from these tips!
-                    </h1>
-                    <p className="text-xl font-light">
-                      Eat fruits, <br /> Drink water, <br /> Exercise regularly,
+          {searchField === "" ? (
+            <div className="w-full block md:hidden lg:hidden">
+              <Carousel className="h-full w-full" pauseOnHover autoplay>
+                <div className="block w-full pt-20 md:hidden lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
+                      <h1 className="text-lg font-light">
+                        Learn How to Stay Healthy From these Tips!
+                      </h1>
+                      <p className="text-xs font-light">
+                        Eat fruits, Drink water, Exercise regularly, avoid
+                        smoking...
+                      </p>
                       <br />
-                      and avoid smoking...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
+                      <Link
+                        href={"/consultations"}
+                        className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={150}
+                      height={250}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctor.png"
+                      alt="doctor"
+                    />
                   </div>
-                  <Image
-                    width={200}
-                    height={200}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctor.png"
-                    alt="doctor"
-                  />
                 </div>
-              </div>
-              <div className="hidden w-full pt-20 md:block lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
-                    <h1 className="text-2xl font-semibold">
-                      Learn How to Manage Stress Daily!
-                    </h1>
-                    <p className="text-xl font-light">
-                      Practice meditation,
-                      <br /> Exercise regularly,
-                      <br /> Take breaks,
+                <div className="block w-full pt-20 md:hidden lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
+                      <h1 className="text-lg font-light">
+                        Learn How to Manage Stress in Your Daily Life!
+                      </h1>
+                      <p className="text-xs font-light">
+                        Practice meditation, Exercise regularly, Take breaks,
+                        Practice self-care...
+                      </p>
                       <br />
-                      Practice self-care...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
+                      <Link
+                        href={"/consultations"}
+                        className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={175}
+                      height={250}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctorLg.png"
+                      alt="doctor"
+                    />
                   </div>
-                  <Image
-                    width={260}
-                    height={200}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctorLg.png"
-                    alt="doctor"
-                  />
                 </div>
-              </div>
-              <div className="hidden w-full pt-20 md:block lg:hidden">
-                <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
-                  <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
-                    <h1 className="text-2xl font-semibold">
-                      Learn these Tips for a Healthy Diet!
-                    </h1>
-                    <p className="text-xl font-light">
-                      Eat whole grains,
-                      <br /> Drink water,
-                      <br /> Limit processed foods,
+                <div className="block w-full pt-20 md:hidden lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 px-4 py-4">
+                      <h1 className="text-lg font-light">
+                        Learn these Tips for a Healthy and Balanced Diet!
+                      </h1>
+                      <p className="text-xs font-light">
+                        Eat whole grains, Drink water, Limit processed foods,
+                        Limit sugary foods...
+                      </p>
                       <br />
-                      Limit sugary foods...
-                    </p>
-                    <br />
-                    <Link
-                      href={"/consultations"}
-                      className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
-                    >
-                      Get consultation
-                    </Link>
+                      <Link
+                        href={"/consultations"}
+                        className="px-3 py-2 rounded-md font-semibold text-base text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={160}
+                      height={250}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctorWomanLg.png"
+                      alt="doctor"
+                    />
                   </div>
-                  <Image
-                    width={200}
-                    height={200}
-                    className="absolute bottom-0 right-0 z-10 overflow-visible"
-                    src="/doctorWomanLg.png"
-                    alt="doctor"
-                  />
                 </div>
-              </div>
-            </Carousel>
-          </div>
+              </Carousel>
+            </div>
+          ) : (
+            ""
+          )}
+          {searchField === "" ? (
+            <div className="w-full hidden md:block lg:hidden">
+              <Carousel className="h-full w-full" autoplay pauseOnHover>
+                <div className="hidden w-full pt-20 md:block lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 pl-8 pr-0 py-5">
+                      <h1 className="text-2xl font-semibold">
+                        Learn how to stay Healthy from these tips!
+                      </h1>
+                      <p className="text-xl font-light">
+                        Eat fruits, <br /> Drink water, <br /> Exercise
+                        regularly,
+                        <br />
+                        and avoid smoking...
+                      </p>
+                      <br />
+                      <Link
+                        href={"/consultations"}
+                        className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={200}
+                      height={200}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctor.png"
+                      alt="doctor"
+                    />
+                  </div>
+                </div>
+                <div className="hidden w-full pt-20 md:block lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
+                      <h1 className="text-2xl font-semibold">
+                        Learn How to Manage Stress Daily!
+                      </h1>
+                      <p className="text-xl font-light">
+                        Practice meditation,
+                        <br /> Exercise regularly,
+                        <br /> Take breaks,
+                        <br />
+                        Practice self-care...
+                      </p>
+                      <br />
+                      <Link
+                        href={"/consultations"}
+                        className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={260}
+                      height={200}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctorLg.png"
+                      alt="doctor"
+                    />
+                  </div>
+                </div>
+                <div className="hidden w-full pt-20 md:block lg:hidden">
+                  <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
+                    <div className="flex flex-col items-start justify-start w-2/3 px-8 py-5">
+                      <h1 className="text-2xl font-semibold">
+                        Learn these Tips for a Healthy Diet!
+                      </h1>
+                      <p className="text-xl font-light">
+                        Eat whole grains,
+                        <br /> Drink water,
+                        <br /> Limit processed foods,
+                        <br />
+                        Limit sugary foods...
+                      </p>
+                      <br />
+                      <Link
+                        href={"/consultations"}
+                        className="px-6 py-3 rounded-md font-semibold text-lg text-[#22796c] bg-[#ffffff]"
+                      >
+                        Get consultation
+                      </Link>
+                    </div>
+                    <Image
+                      width={200}
+                      height={200}
+                      className="absolute bottom-0 right-0 z-10 overflow-visible"
+                      src="/doctorWomanLg.png"
+                      alt="doctor"
+                    />
+                  </div>
+                </div>
+              </Carousel>
+            </div>
+          ) : (
+            ""
+          )}
           <div className="hidden w-full pt-20 md:hidden lg:flex">
             <div className="text-white w-full bg-[#2A9988] rounded-xl relative flex flex-row">
               <div className="flex flex-col items-start justify-start w-1/2 gap-5 py-8 pl-10">
