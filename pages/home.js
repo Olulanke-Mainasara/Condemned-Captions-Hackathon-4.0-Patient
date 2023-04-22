@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { Input } from "antd";
+import { Input, Carousel } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 const Home = () => {
   const [value, setValue] = useState(specialistsDummy.specialists);
+  const [searchField, setSearchField] = useState("");
   const router = useRouter();
   const firstName = router.query.firstName;
 
@@ -19,6 +20,7 @@ const Home = () => {
   const doctorsArray = doctorsDummyData.doctors;
 
   const onSearch = (e) => {
+    setSearchField(e.target.value);
     const filterData = specialistsDummy.specialists
       .map((data) => data)
       .filter(function (data) {
@@ -107,7 +109,7 @@ const Home = () => {
                 </p>
                 <br />
                 <Link
-                  href={"/appointments"}
+                  href={"/consultations"}
                   className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]"
                 >
                   Get consultation
@@ -134,7 +136,7 @@ const Home = () => {
                 </p>
                 <br />
                 <Link
-                  href={"/appointments"}
+                  href={"/consultations"}
                   className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]"
                 >
                   Get consultation
@@ -239,6 +241,7 @@ const Home = () => {
                   >
                     <div className="flex flex-col items-center justify-center w-2/5 p-2">
                       <Image
+                        className="rounded-full"
                         width={80}
                         height={80}
                         alt="docPic"

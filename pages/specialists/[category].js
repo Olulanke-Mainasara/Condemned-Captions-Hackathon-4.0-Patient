@@ -55,6 +55,7 @@ export default function Category({ specialist }) {
                             src={data.profilePic}
                             priority
                             alt="ProfilePic"
+                            className="rounded-full"
                           />
                         </div>
                         <div>
@@ -85,7 +86,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { category } = params;
 
-  const specialist = specialistsArray.find((spec) => spec.id.toString() === category);
+  const specialist = specialistsArray.find(
+    (spec) => spec.id.toString() === category
+  );
 
   return {
     props: {

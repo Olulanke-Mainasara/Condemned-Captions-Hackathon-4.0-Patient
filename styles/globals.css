@@ -13,6 +13,11 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.ant-carousel {
+  display: flex;
+  flex-direction: row;
+}
+
 input,
 select,
 textarea {
