@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */ // Disable warnings related to React hooks dependency arrays
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,11 +10,12 @@ import { auth, db } from "@/firebase/client";
 import { collection, getDocs } from "firebase/firestore";
 
 function Nav() {
-  const [navMenu, openMenu, closeMenu] = useNavigationBar();
-  const [arrayUsed, setArrayUsed] = useState([]);
-  const { dark, toggleDark } = useStore();
-  const router = useRouter();
+  const [navMenu, openMenu, closeMenu] = useNavigationBar(); // Get navigation bar state and functions for opening/closing the menu
+  const [arrayUsed, setArrayUsed] = useState([]); // Define state for storing array of upcoming appointments
+  const { dark, toggleDark } = useStore(); // Get state and function for toggling dark mode
+  const router = useRouter(); // Get Next.js router instance
 
+  // Define array of links
   const links = [
     {
       id: 1,
@@ -42,47 +43,56 @@ function Nav() {
     },
   ];
 
+  // Define function for loading user's upcoming appointments from Firestore
   const handleLoad = async () => {
-    const user = auth.currentUser;
+    const user = auth.currentUser; // Get the currently authenticated user
 
     try {
       if (user) {
-        const uid = user.uid;
+        // If there is a user
+        const uid = user.uid; // Get their UID
 
+        // Query the Firestore collection for the user's upcoming appointments
         const upcomingQuerySnapshot = await getDocs(
           collection(db, "users", uid, "upcoming-appointments")
         );
+
+        // Map the query snapshot to an array of appointment objects, including the document ID
         const upcomingAppointmentsData = upcomingQuerySnapshot.docs.map(
           (doc) => ({ ...doc.data(), id: doc.id })
         );
 
-        setArrayUsed(upcomingAppointmentsData);
+        setArrayUsed(upcomingAppointmentsData); // Store the array in state
       } else {
-        alert("Oops! You're not logged in.");
-        router.push("/login");
+        // If there is no user
+        alert("Oops! You're not logged in."); // Alert the user
+        router.push("/login"); // Redirect to the login page
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message); // Log any errors
     }
   };
 
   useEffect(() => {
-    handleLoad();
+    handleLoad(); // Load the user's upcoming appointments when the component mounts
   }, []);
 
+  // Define function for transitioning to the appointments page
   const handleTransition = () => {
     if (navMenu) {
-      closeMenu();
+      // If the menu is open
+      closeMenu(); // Close it
     }
-    router.push("/appointments");
+    router.push("/appointments"); // Transition to the appointments page
   };
 
+  // Define function for signing out
   const handleSignOut = async () => {
     try {
-      await auth.signOut();
-      window.location.href = "/login";
+      await auth.signOut(); // Sign out the user
+      window.location.href = "/login"; // Redirect to the login page
     } catch (error) {
-      alert("Error signing out", error);
+      alert("Error signing out", error); // Alert the user if there's an error
     }
   };
 
