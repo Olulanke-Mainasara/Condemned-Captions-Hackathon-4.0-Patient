@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,7 +13,7 @@ function Nav() {
   const [navMenu, openMenu, closeMenu] = useNavigationBar();
   const [arrayUsed, setArrayUsed] = useState([]);
   const { dark, toggleDark } = useStore();
-  const router = useRouter()
+  const router = useRouter();
 
   const links = [
     {
@@ -54,7 +55,7 @@ function Nav() {
         const upcomingAppointmentsData = upcomingQuerySnapshot.docs.map(
           (doc) => ({ ...doc.data(), id: doc.id })
         );
-        
+
         setArrayUsed(upcomingAppointmentsData);
       } else {
         alert("Oops! You're not logged in.");
@@ -68,6 +69,13 @@ function Nav() {
   useEffect(() => {
     handleLoad();
   }, []);
+
+  const handleTransition = () => {
+    if (navMenu) {
+      closeMenu();
+    }
+    router.push("/appointments");
+  };
 
   const handleSignOut = async () => {
     try {
@@ -207,16 +215,16 @@ function Nav() {
                           {data.appointmentDate + " | " + data.appointmentTime}
                         </p>
 
-                        <Link
-                          href={"/appointments"}
+                        <button
+                          onClick={() => handleTransition()}
                           className="px-3 py-1 text-red-500 border border-red-500 rounded-lg"
                         >
                           Cancel app.
-                        </Link>
+                        </button>
                       </div>
                       <div className="flex items-center justify-between w-full p-4">
                         <div className="flex items-center gap-2">
-                          <div className="relative w-20 xl:w-32 aspect-square">
+                          <div className="relative w-20 xl:w-32 aspect-square rounded-full overflow-hidden">
                             <Image
                               fill
                               src={data.doc}
@@ -231,12 +239,12 @@ function Nav() {
                             </p>
                           </div>
                         </div>
-                        <Link
-                          href={"/appointments"}
+                        <button
+                          onClick={() => handleTransition()}
                           className="px-3 py-1 text-white border bg-[#1C665B] rounded-lg"
                         >
                           View
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   );

@@ -78,7 +78,6 @@ function Appointments() {
   const cancelApp = async (id) => {
     try {
       const user = auth.currentUser;
-      console.log(typeof id);
       if (user) {
         const uid = user.uid;
         const appointmentDocRef = doc(
@@ -100,9 +99,14 @@ function Appointments() {
   };
 
   const handleCancel = (idToBeDeleted) => {
-    window.confirm("Are you sure you want to cancel this appointment?");
-    cancelApp(idToBeDeleted);
+    const confirmed = window.confirm(
+      "Are you sure you want to cancel this appointment?"
+    );
+    if (confirmed) {
+      cancelApp(idToBeDeleted);
+    }
   };
+
 
   return (
     <>

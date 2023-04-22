@@ -29,7 +29,7 @@ export default function Hospitals({ allHospitals }) {
         <div className="flex mx-auto flex-col w-[95%] max-w-[900px] h-screen pt-5 pb-14 xl:pt-24 overflow-hidden scrollbar-hide">
           <Nav />
 
-          <h1 className="text-4xl text-center md:text-6xl text-[#818383]">
+          <h1 className="text-4xl text-center md:text-6xl text-[#2A9988]">
             Hospitals
           </h1>
 
