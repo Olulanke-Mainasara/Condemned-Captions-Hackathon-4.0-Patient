@@ -93,7 +93,7 @@ function Booking() {
         complaint: complaint,
         appointmentDate: appointmentDate,
         appointmentTime: appointmentTime,
-        qr_string: "",
+        qrString: fname + lname + appointmentTime,
       };
 
       try {
@@ -411,6 +411,7 @@ function Booking() {
               hospital={hospital}
               appointmentDate={appointmentDate}
               appointmentTime={appointmentTime}
+              qrString={fname + lname + appointmentTime}
             />
             <h1 className="text-sm text-center">
               Download your Ticket and Keep it safe. You will present it to the
