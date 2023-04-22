@@ -2,12 +2,38 @@ import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { Card, QRCode, Button, message } from "antd";
 import Link from "next/link";
+import { auth, db } from "@/firebase/client";
+import { doc, updateDoc } from "firebase/firestore";
 
 export const Ticket = ({patientName, specialist, hospital, appointmentDate, appointmentTime}) => {
   const [string, setString] = useState(
     `Patient Name: ${patientName}, Appointment Status: Upcoming...`
   );
   const [visible, setVisible] = useState(false);
+
+  const addQrCode = async () => {
+    try {
+      const user = auth.currentUser;
+      console.log(typeof id);
+      if (user) {
+        const uid = user.uid;
+        const appointmentDocRef = doc(
+          db,
+          "users",
+          uid,
+          "upcoming-appointments",
+          id
+        );
+        // This the function that updates the users upcoming appointment, but I dont know exactly what generates the code
+        await updateDoc(appointmentDocRef, {qr_string: ""});
+      } else {
+        alert("Oops! You're not logged in.");
+        router.push("/login");
+      }
+    } catch (error) {
+      console.error("Error adding Qr Code appointment: ", error);
+    }
+  }
 
   const downloadTicket = async () => {
     setVisible(true);
