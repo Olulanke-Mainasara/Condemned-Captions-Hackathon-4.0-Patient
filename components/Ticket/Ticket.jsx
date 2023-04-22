@@ -9,9 +9,27 @@ export const Ticket = ({
   hospital,
   appointmentDate,
   appointmentTime,
-  qrString,
+  complaint,
 }) => {
-  const [string, setString] = useState(qrString);
+  const [string, setString] = useState(
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <h1>Patient Name: {patientName}</h1>
+      <h1>Specialist: {specialist}</h1>
+      <h1>Hospital: {hospital}</h1>
+      <h1>Appointment Date: {appointmentDate}</h1>
+      <h1>Appointment Time: {appointmentTime}</h1>
+      <h1>Appointment Status: Ongoing</h1>
+      <h1>Complaint: {complaint}</h1>
+      <h1>Gender: {gender}</h1>
+    </div>
+  );
   const [visible, setVisible] = useState(false);
 
   const downloadTicket = async () => {
