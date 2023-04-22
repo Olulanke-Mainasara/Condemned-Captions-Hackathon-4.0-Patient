@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import React, { useState, useRef } from "react";
 import { states } from "@/data/arrays";
-import useStore from "@/providers/appStore";
 import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummy from "/data/doctorsDummyData.json";
 import Head from "next/head";
@@ -11,7 +10,6 @@ import { auth, db } from "@/firebase/client";
 import { collection, addDoc } from "firebase/firestore";
 
 function Booking() {
-  const { addItem, addUpcoming } = useStore();
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [dob, setDob] = useState("");

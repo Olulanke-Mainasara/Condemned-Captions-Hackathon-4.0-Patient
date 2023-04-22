@@ -9,5 +9,5 @@ const clientCredentials = {
 };
 
 const app = initializeApp(clientCredentials);
-// export const auth = getAuth(app);
-// export const db = getFirestore(app)
+export const auth = getAuth(app);
+export const db = getFirestore(app)

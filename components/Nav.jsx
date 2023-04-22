@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { EditOutlined } from "@ant-design/icons";
 import useNavigationBar from "./hooks/useNavigationBar";
 import useStore from "@/providers/appStore";
-import { auth } from "@/firebase/client";
+import { useRouter } from "next/router";
+import { auth, db } from "@/firebase/client";
+import { collection, getDocs } from "firebase/firestore";
 
 function Nav() {
   const [navMenu, openMenu, closeMenu] = useNavigationBar();
-  const { dark, toggleDark, upcomingItems } = useStore();
+  const [arrayUsed, setArrayUsed] = useState([]);
+  const { dark, toggleDark } = useStore();
+  const router = useRouter()
 
   const links = [
     {
@@ -36,6 +40,34 @@ function Nav() {
       label: "Hospitals",
     },
   ];
+
+  const handleLoad = async () => {
+    const user = auth.currentUser;
+
+    try {
+      if (user) {
+        const uid = user.uid;
+
+        const upcomingQuerySnapshot = await getDocs(
+          collection(db, "users", uid, "upcoming-appointments")
+        );
+        const upcomingAppointmentsData = upcomingQuerySnapshot.docs.map(
+          (doc) => ({ ...doc.data(), id: doc.id })
+        );
+        
+        setArrayUsed(upcomingAppointmentsData);
+      } else {
+        alert("Oops! You're not logged in.");
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, []);
 
   const handleSignOut = async () => {
     try {
@@ -88,6 +120,13 @@ function Nav() {
               ) : (
                 <Image fill src={"/dark.svg"} alt="closeMenu" />
               )}
+            </button>
+
+            <button
+              onClick={() => handleSignOut()}
+              className="hidden xl:flex items-center justify-center py-2 px-4 bg-white hover:bg-[#1C665B] text-[#2a9988] hover:text-white duration-500 rounded-lg shadow-lg"
+            >
+              Logout
             </button>
 
             <button
@@ -151,13 +190,13 @@ function Nav() {
           <div className="relative w-full h-full pt-10 pb-8 overflow-hidden scrollbar-hide">
             <div
               className={`w-full h-full ${
-                upcomingItems.length == 0
+                arrayUsed.length == 0
                   ? "flex flex-col items-center justify-center gap-10"
                   : "md:grid md:grid-cols-2 md:gap-4 xl:gap-10"
               } overflow-scroll scrollbar-hide`}
             >
-              {upcomingItems.length > 0 ? (
-                upcomingItems.map((data) => {
+              {arrayUsed.length > 0 ? (
+                arrayUsed.map((data) => {
                   return (
                     <div
                       className="flex h-fit flex-col mx-auto w-[95%] bg-[#FCFCFC] rounded-lg shadow-lg mb-8"

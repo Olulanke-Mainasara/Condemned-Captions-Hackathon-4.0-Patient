@@ -14,7 +14,6 @@ function Appointments() {
   const [history, setHistory] = useState(false);
   const [arrayUsed, setArrayUsed] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [showCancelModal, setShowCancelModal] = useState(false);
   const [modalData, setModalData] = useState({
     id: "",
     state: "",
@@ -100,17 +99,9 @@ function Appointments() {
     }
   };
 
-  const openCancelModal = () => {
-    setShowCancelModal(true);
-  };
-
   const handleCancel = (idToBeDeleted) => {
+    window.confirm("Are you sure you want to cancel this appointment?");
     cancelApp(idToBeDeleted);
-    setShowCancelModal(false);
-  };
-
-  const closeCancelModal = () => {
-    setShowCancelModal(false);
   };
 
   return (
@@ -179,10 +170,7 @@ function Appointments() {
                             {upcoming && (
                               <button
                                 className="px-3 py-1 text-red-500 border border-red-500 rounded-lg"
-                                onClick={() => {
-                                  openCancelModal();
-                                  handleCancel(data.id);
-                                }}
+                                onClick={() => handleCancel(data.id)}
                               >
                                 Cancel appointment
                               </button>
@@ -190,7 +178,7 @@ function Appointments() {
                           </div>
                           <div className="flex items-center justify-between w-full p-4">
                             <div className="flex items-center gap-2">
-                              <div className="relative w-20 xl:w-32 aspect-square">
+                              <div className="relative w-20 xl:w-32 rounded-full overflow-hidden aspect-square">
                                 <Image
                                   fill
                                   src={data.doc}
@@ -270,7 +258,7 @@ function Appointments() {
 
             <div className="flex flex-col items-center justify-between w-full p-4 pt-6">
               <div className="flex items-center w-full gap-2 pb-6">
-                <div className="relative w-32 aspect-square">
+                <div className="relative w-32 aspect-square rounded-full overflow-hidden">
                   <Image fill src={modalData.doc} alt="ProfilePic" />
                 </div>
                 <div>
@@ -294,30 +282,6 @@ function Appointments() {
                   <span className="font-normal">{modalData.complaint}</span>
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showCancelModal && (
-        <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
-          <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">
-            <h1 className="text-xl text-center">
-              Are you sure you want to cancel this appointment?
-            </h1>
-            <div className="flex items-center justify-center gap-10 text-white">
-              <button
-                className="px-3 py-1 bg-red-500 border rounded-lg hover:bg-red-800"
-                onClick={() => closeCancelModal()}
-              >
-                No
-              </button>
-              <button
-                className="px-3 py-1 border bg-[#2a9988] hover:bg-[#1C665B] duration-500 rounded-lg"
-                onClick={() => cancelApp()}
-              >
-                Yes
-              </button>
             </div>
           </div>
         </div>
