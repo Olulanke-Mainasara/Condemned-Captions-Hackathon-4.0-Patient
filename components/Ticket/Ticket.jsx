@@ -9,42 +9,17 @@ export const Ticket = ({
   hospital,
   appointmentDate,
   appointmentTime,
-  complaint,
+  qrString,
 }) => {
-  // Define state variables for the QR code string and the modal visibility
-  const [string, setString] = useState(
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <h1>Patient Name: {patientName}</h1>
-      <h1>Specialist: {specialist}</h1>
-      <h1>Hospital: {hospital}</h1>
-      <h1>Appointment Date: {appointmentDate}</h1>
-      <h1>Appointment Time: {appointmentTime}</h1>
-      <h1>Appointment Status: Ongoing</h1>
-      <h1>Complaint: {complaint}</h1>
-      <h1>Gender: {gender}</h1>
-    </div>
-  );
+  const [string, setString] = useState(qrString);
   const [visible, setVisible] = useState(false);
 
-  // Function to download the ticket
   const downloadTicket = async () => {
-    // Show the modal
     setVisible(true);
-    // Get the QR code element
     const element = document.getElementById("myqrcode");
-    // Create a canvas from the QR code element
     const canvas = await html2canvas(element);
-    // Append the canvas to the document body
     document.body.appendChild(canvas);
     if (canvas) {
-      // If the canvas exists, create a URL from it and download it
       const url = canvas.toDataURL();
       const a = document.createElement("a");
       a.download = "My_Appointment.png";
@@ -53,11 +28,9 @@ export const Ticket = ({
       a.click();
       document.body.removeChild(a);
       document.body.removeChild(canvas);
-      // Show a success message and hide the modal
       message.info("Done ✅");
       setVisible(false);
     } else {
-      // If the canvas doesn't exist, show an error message and hide the modal
       message.info("No document found.📄 Please Try again!⚠️");
       document.body.removeChild(canvas);
       setVisible(false);
