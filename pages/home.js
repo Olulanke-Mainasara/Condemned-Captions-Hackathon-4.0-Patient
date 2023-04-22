@@ -15,7 +15,6 @@ const Home = () => {
   const router = useRouter();
   const firstName = router.query.firstName;
 
-
   // const dummyData = specialistsDummy.specialists
   const doctorsArray = doctorsDummyData.doctors;
 
@@ -63,7 +62,7 @@ const Home = () => {
                 height={20}
                 className="cursor-pointer"
               />
-              <Link href={"/consultations"} className="flex items-center">
+              <Link href={"/appointments"} className="flex items-center">
                 <Image
                   src="/Notification.svg"
                   alt="wallet"
@@ -108,7 +107,7 @@ const Home = () => {
                 </p>
                 <br />
                 <Link
-                  href={"/consultations"}
+                  href={"/appointments"}
                   className="px-2 py-1 rounded-md font-light text-sm bg-[#3EE5CC]"
                 >
                   Get consultation
@@ -135,7 +134,7 @@ const Home = () => {
                 </p>
                 <br />
                 <Link
-                  href={"/consultations"}
+                  href={"/appointments"}
                   className="px-4 py-1 rounded-md font-semibold text-md bg-[#3EE5CC]"
                 >
                   Get consultation
@@ -163,7 +162,7 @@ const Home = () => {
                   <li>• Avoid smoking...</li>
                 </ul>
                 <Link
-                  href={"/consultations"}
+                  href={"/appointments"}
                   className="px-8 py-2 rounded-xl text-2xl bg-[#3EE5CC]"
                 >
                   Get consultation

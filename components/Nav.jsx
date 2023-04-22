@@ -19,9 +19,9 @@ function Nav() {
     },
     {
       id: 2,
-      link: "/consultations",
+      link: "/appointments",
       imgSrc: "/cross.svg",
-      label: "Consultations",
+      label: "Appointments",
     },
     {
       id: 3,
@@ -169,7 +169,7 @@ function Nav() {
                         </p>
 
                         <Link
-                          href={"/consultations"}
+                          href={"/appointments"}
                           className="px-3 py-1 text-red-500 border border-red-500 rounded-lg"
                         >
                           Cancel app.
@@ -193,7 +193,7 @@ function Nav() {
                           </div>
                         </div>
                         <Link
-                          href={"/consultations"}
+                          href={"/appointments"}
                           className="px-3 py-1 text-white border bg-[#1C665B] rounded-lg"
                         >
                           View
@@ -205,7 +205,7 @@ function Nav() {
               ) : (
                 <>
                   <p className="text-black dark:text-white md:text-xl">
-                    No consultation(s) found
+                    No appointment(s) found
                   </p>
                   <div className="relative w-40 md:w-48 aspect-square">
                     <Image
@@ -228,7 +228,7 @@ function Nav() {
               <div className="relative w-5 h-5">
                 <Image src={"/cross.svg"} fill alt="placeholderImg" />
               </div>
-              Book Appointment
+              Book appointment
             </Link>
             <button
               onClick={() => handleSignOut()}

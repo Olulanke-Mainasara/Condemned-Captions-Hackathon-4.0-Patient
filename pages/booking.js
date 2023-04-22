@@ -7,57 +7,117 @@ import doctorsDummy from "/data/doctorsDummyData.json";
 import Head from "next/head";
 import { Ticket } from "@/components/Ticket/Ticket";
 import { useRouter } from "next/router";
+import { auth, db } from "@/firebase/client";
+import { collection, addDoc } from "firebase/firestore";
 
 function Booking() {
   const { addItem, addUpcoming } = useStore();
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [dob, setDob] = useState("");
+  const [address, setAddress] = useState("");
   const [selectedGender, setSelectedGender] = useState("Male");
-  const [patientName, setPatientName] = useState("");
-  const [specialist, setSpecialist] = useState("");
+  const [state, setState] = useState("");
+  const [availableHospitals, setAvailableHospitals] = useState([]);
   const [hospital, setHospital] = useState("");
+  const [department, setDepartment] = useState("");
+  const [specialist, setSpecialist] = useState("");
+  const [complaint, setComplaint] = useState("");
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [availableHospitals, setAvailableHospitals] = useState([]);
+
   const specialistsArray = specialistsDummy.specialists;
   const doctorsArray = doctorsDummy.doctors;
   const router = useRouter();
 
-  const formFieldsRef = useRef({
-    id: Math.floor(Math.random() * 10000),
-    status: "upcoming",
-    fname: "",
-    lname: "",
-    dob: "",
-    address: "",
-    gender: "Male",
-    state: "",
-    hospital: "",
-    department: "",
-    specialist: "",
-    doc: "/doc1.svg",
-    complaint: "",
-    appointmentDate: "",
-    appointmentTime: "",
-  });
-
-  const formRef = useRef(null);
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    addItem(formFieldsRef.current);
-    addUpcoming(formFieldsRef.current);
-    formRef.current.reset();
-    setPatientName(formFieldsRef.current.fname);
-    setSpecialist(formFieldsRef.current.specialist);
-    setHospital(formFieldsRef.current.hospital);
-    setAppointmentDate(formFieldsRef.current.appointmentDate);
-    setAppointmentTime(formFieldsRef.current.appointmentTime);
-    setShowConfirmation(true);
-  };
+    const user = auth.currentUser;
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    formFieldsRef.current[name] = value;
+    if (user) {
+      // user is signed in, get their UID
+      const uid = user.uid;
+      const date = new Date();
+
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      const seconds = date.getSeconds().toString().padStart(2, "0");
+
+      const docs = [
+        "/doc1.jpg",
+        "/doc2.jpg",
+        "/doc3.jpg",
+        "/doc4.jpg",
+        "/doc5.jpg",
+        "/doc6.jpg",
+        "/doc7.jpg",
+        "/doc8.jpg",
+        "/doc9.svg",
+        "/doc10.svg",
+      ];
+      const randomIndex = Math.floor(Math.random() * docs.length);
+      const randomPic = docs[randomIndex];
+
+      // Create "upcoming-appointments" and "all-appointments" collections for the user
+      const upcomingAppointmentsRef = collection(
+        db,
+        "users",
+        uid,
+        "upcoming-appointments"
+      );
+
+      const allAppointmentsRef = collection(
+        db,
+        "users",
+        uid,
+        "all-appointments"
+      );
+
+      const appointmentDetails = {
+        dateOfBooking: `${day}/${month}/${year}`,
+        timeOfBooking: `${hours}:${minutes}:${seconds}`,
+        firstName: fname,
+        lastName: lname,
+        dateOfBirth: dob,
+        address: address,
+        gender: selectedGender,
+        state: state,
+        hospital: hospital,
+        department: department,
+        specialist: specialist,
+        doc: randomPic,
+        complaint: complaint,
+        appointmentDate: appointmentDate,
+        appointmentTime: appointmentTime,
+      };
+
+      try {
+        // Create a "New Consultation" document in "upcoming-appointments" collection
+        const newUpcomingAppointmentRef = await addDoc(
+          upcomingAppointmentsRef,
+          appointmentDetails
+        );
+
+        // Create a "New Consultation" document in "all-appointments" collection
+        const newAllAppointmentRef = await addDoc(
+          allAppointmentsRef,
+          appointmentDetails
+        );
+
+        setShowConfirmation(true);
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      // user is not signed in' redirect to the login page
+      alert("Oops! You're not logged in.");
+      router.push("/login");
+    }
   };
 
   async function handleAvailableHospitals(event) {
@@ -107,7 +167,6 @@ function Booking() {
 
         <div className="flex items-center justify-around mb-16">
           <form
-            ref={formRef}
             className="flex flex-col justify-center w-full max-w-xl p-4 py-5 h-fit md:p-8 gap-7 md:gap-10 xl:max-w-fit"
             onSubmit={handleSubmit}
           >
@@ -126,7 +185,8 @@ function Booking() {
                       minLength="2"
                       maxLength="50"
                       required
-                      onChange={handleInputChange}
+                      value={fname}
+                      onChange={(e) => setFname(e.target.value)}
                     />
                   </label>
 
@@ -140,7 +200,8 @@ function Booking() {
                       minLength="2"
                       maxLength="50"
                       required
-                      onChange={handleInputChange}
+                      value={lname}
+                      onChange={(e) => setLname(e.target.value)}
                     />
                   </label>
 
@@ -150,7 +211,9 @@ function Booking() {
                       type="date"
                       className="w-full h-12 px-3 mt-1 rounded"
                       name="dob"
-                      onChange={handleInputChange}
+                      required
+                      value={dob}
+                      onChange={(e) => setDob(e.target.value)}
                     />
                   </label>
 
@@ -162,7 +225,8 @@ function Booking() {
                       name="address"
                       minLength="2"
                       required
-                      onChange={handleInputChange}
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
                     />
                   </label>
 
@@ -173,6 +237,7 @@ function Booking() {
                         type="radio"
                         name="gender"
                         value="Male"
+                        required
                         checked={selectedGender === "Male"}
                         onChange={(e) => {
                           handleGenderChange(e);
@@ -191,7 +256,6 @@ function Booking() {
                         checked={selectedGender === "Female"}
                         onChange={(e) => {
                           handleGenderChange(e);
-                          handleInputChange(e);
                         }}
                       />
                       Female
@@ -207,8 +271,10 @@ function Booking() {
                     <select
                       name="state"
                       className="w-full h-12 px-3 mt-1 rounded outline-none"
+                      required
+                      value={state}
                       onChange={(e) => {
-                        handleInputChange(e);
+                        setState(e.target.value);
                         handleAvailableHospitals(e);
                       }}
                     >
@@ -226,7 +292,9 @@ function Booking() {
                     <select
                       name="hospital"
                       className="w-full h-12 px-3 mt-1 rounded outline-none"
-                      onChange={handleInputChange}
+                      required
+                      value={hospital}
+                      onChange={(e) => setHospital(e.target.value)}
                     >
                       <option>Select</option>
                       {availableHospitals.map((hospital) => {
@@ -248,7 +316,9 @@ function Booking() {
                     <select
                       name="department"
                       className="w-full h-12 px-3 mt-1 rounded outline-none"
-                      onChange={handleInputChange}
+                      required
+                      value={department}
+                      onChange={(e) => setDepartment(e.target.value)}
                     >
                       <option>Select</option>
                       {specialistsArray.map((data) => (
@@ -264,7 +334,9 @@ function Booking() {
                     <select
                       name="specialist"
                       className="w-full h-12 px-3 mt-1 rounded outline-none"
-                      onChange={handleInputChange}
+                      required
+                      value={specialist}
+                      onChange={(e) => setSpecialist(e.target.value)}
                     >
                       <option>Select</option>
                       {doctorsArray.map((data) => (
@@ -287,8 +359,10 @@ function Booking() {
                     className="w-full p-3 mt-1 text-base rounded-lg outline-none"
                     rows={8}
                     cols={40}
+                    required
+                    value={complaint}
                     placeholder="Please write down your complaint"
-                    onChange={handleInputChange}
+                    onChange={(e) => setComplaint(e.target.value)}
                   ></textarea>
                 </label>
 
@@ -298,7 +372,9 @@ function Booking() {
                     type="date"
                     className="w-full h-12 px-3 mt-1 rounded"
                     name="appointmentDate"
-                    onChange={handleInputChange}
+                    required
+                    value={appointmentDate}
+                    onChange={(e) => setAppointmentDate(e.target.value)}
                   />
                 </label>
 
@@ -308,10 +384,9 @@ function Booking() {
                     type="time"
                     className="w-full h-12 px-3 mt-1 rounded"
                     name="appointmentTime"
-                    min="08:00"
-                    max="17:00"
                     required
-                    onChange={handleInputChange}
+                    value={appointmentTime}
+                    onChange={(e) => setAppointmentTime(e.target.value)}
                   />
                 </label>
               </div>
@@ -331,7 +406,7 @@ function Booking() {
         <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
           <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">
             <Ticket
-              patientName={patientName}
+              patientName={fname}
               specialist={specialist}
               hospital={hospital}
               appointmentDate={appointmentDate}

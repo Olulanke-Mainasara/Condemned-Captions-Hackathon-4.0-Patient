@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const Ticket = ({patientName, specialist, hospital, appointmentDate, appointmentTime}) => {
   const [string, setString] = useState(
-    `Patient Name: ${patientName}, Consultation Status: Upcoming...`
+    `Patient Name: ${patientName}, Appointment Status: Upcoming...`
   );
   const [visible, setVisible] = useState(false);
 
@@ -78,11 +78,11 @@ export const Ticket = ({patientName, specialist, hospital, appointmentDate, appo
       <br />
       <Button.Group className="w-[90%] rounded-xl">
         <Link
-          href={"/consultations"}
+          href={"/appointments"}
           style={{ padding: "5px 40px" }}
           className="flex items-center justify-center w-1/2 text-white bg-teal-700 rounded-l-lg hover:bg-teal-800 active:bg-teal-800"
         >
-          Consultations
+          Appointments
         </Link>
         <Button
           size="medium"

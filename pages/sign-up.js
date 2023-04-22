@@ -107,7 +107,7 @@ const GetStarted = () => {
               </label>
 
               {errorMessage && (
-                <p className="text-white xl:text-black">{errorMessage}</p>
+                <p className="text-white">{errorMessage}</p>
               )}
 
               <p className="terms">
