@@ -355,6 +355,7 @@ function Booking() {
                   <textarea
                     name="complaint"
                     className="w-full p-3 mt-1 text-base rounded-lg outline-none"
+                    maxLength={150}
                     rows={8}
                     cols={40}
                     required
@@ -404,14 +405,15 @@ function Booking() {
         <div className="absolute top-0 flex items-center justify-center w-screen h-screen backdrop-brightness-[25%]">
           <div className="flex flex-col items-center justify-center w-4/5 max-w-xs gap-4 px-4 py-6 text-black bg-white rounded-lg">
             <Ticket
-              patientName={fname}
+              patientName={fname + " " + lname}
               specialist={specialist}
               hospital={hospital}
               appointmentDate={appointmentDate}
               appointmentTime={appointmentTime}
               qrString={fname + lname + appointmentTime}
               complaint={complaint}
-              gender={gender}
+              gender={selectedGender}
+              address={address}
             />
             <h1 className="text-sm text-center">
               Download your Ticket and Keep it safe. You will present it to the

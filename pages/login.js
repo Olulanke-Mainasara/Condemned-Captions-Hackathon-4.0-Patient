@@ -26,7 +26,7 @@ const Login = () => {
       const userDoc = await getDoc(doc(db, "users", uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        
+
         router.push({
           pathname: "/home",
           query: { firstName: userData.firstname },
@@ -34,7 +34,7 @@ const Login = () => {
       } else {
         router.push({
           pathname: "/sign-up",
-        });;
+        });
       }
     } catch (error) {
       setErrorMessage(error.message);
@@ -76,9 +76,7 @@ const Login = () => {
                 />
               </label>
 
-              {errorMessage && (
-                <p className="text-white">{errorMessage}</p>
-              )}
+              {errorMessage && <p className="text-red-600">{errorMessage}</p>}
 
               <p className="terms">
                 Don&apos;t have an account?&nbsp;

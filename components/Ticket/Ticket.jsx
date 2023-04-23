@@ -10,26 +10,20 @@ export const Ticket = ({
   appointmentDate,
   appointmentTime,
   complaint,
+  gender,
+  address,
 }) => {
-  const [string, setString] = useState(
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <h1>Patient Name: {patientName}</h1>
-      <h1>Specialist: {specialist}</h1>
-      <h1>Hospital: {hospital}</h1>
-      <h1>Appointment Date: {appointmentDate}</h1>
-      <h1>Appointment Time: {appointmentTime}</h1>
-      <h1>Appointment Status: Ongoing</h1>
-      <h1>Complaint: {complaint}</h1>
-      <h1>Gender: {gender}</h1>
-    </div>
-  );
+  const [string, setString] = useState([
+    `${patientName}`,
+    `o0o ${specialist}`,
+    `o0o ${hospital}`,
+    `o0o ${appointmentDate}`,
+    `o0o ${appointmentTime}`,
+    `o0o ${complaint}`,
+    `o0o ${gender}`,
+    `o0o ${address}`,
+    `o0o Ongoing`,
+  ]);
   const [visible, setVisible] = useState(false);
 
   const downloadTicket = async () => {
@@ -82,7 +76,7 @@ export const Ticket = ({
           </div>
           <div>
             <QRCode
-              errorLevel="H"
+              errorLevel="L"
               size={200}
               value={string}
               iconSize={200 / 6}
