@@ -4,11 +4,14 @@ import { motion } from "framer-motion";
 function SplashText() {
   return (
     <motion.div
+      // Set initial opacity to 1
       initial={{ opacity: 1 }}
+      // Animate opacity to 0 with a duration of 0.4 seconds and a delay of 1 second
       animate={{
         opacity: 0,
         transition: { duration: 0.4, delay: 1 },
       }}
+      // Add classnames for styling
       className="flex flex-col items-center justify-center text-white"
     >
       <h1 className="xl:text-9xl 2xl:text-[160px] lg:text-8xl md:text-7xl text-4xl font-thin">

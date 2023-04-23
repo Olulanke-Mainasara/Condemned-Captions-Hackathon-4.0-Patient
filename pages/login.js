@@ -75,9 +75,7 @@ const Login = () => {
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </label>
-
               {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-
               <p className="terms">
                 Don&apos;t have an account?&nbsp;
                 <Link href={"/sign-up"}>Sign-up</Link>
