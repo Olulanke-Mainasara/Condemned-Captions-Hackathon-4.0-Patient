@@ -180,7 +180,7 @@ function Booking() {
                       className="w-full h-12 pl-3 rounded min-w-[300px] mt-1"
                       name="fname"
                       pattern="[A-Za-z]+"
-                      minLength="2"
+                      minLength="3"
                       maxLength="50"
                       required
                       value={fname}
@@ -195,7 +195,7 @@ function Booking() {
                       className="w-full h-12 pl-3 rounded min-w-[300px] mt-1"
                       name="lname"
                       pattern="[A-Za-z]+"
-                      minLength="2"
+                      minLength="3"
                       maxLength="50"
                       required
                       value={lname}
@@ -357,6 +357,7 @@ function Booking() {
                     className="w-full p-3 mt-1 text-base rounded-lg outline-none"
                     rows={8}
                     cols={40}
+                    minLength={50}
                     required
                     value={complaint}
                     placeholder="Please write down your complaint"

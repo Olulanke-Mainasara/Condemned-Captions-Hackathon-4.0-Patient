@@ -61,6 +61,7 @@ const GetStarted = () => {
                 <input
                   type="text"
                   placeholder="John"
+                  minLength={3}
                   value={firstName}
                   onChange={(event) => setFirstName(event.target.value)}
                 />
@@ -72,6 +73,7 @@ const GetStarted = () => {
                   type="text"
                   placeholder="Doe"
                   value={lastName}
+                  minLength={3}
                   onChange={(event) => setLastName(event.target.value)}
                 />
               </label>
@@ -80,7 +82,8 @@ const GetStarted = () => {
                 Phone Number
                 <input
                   type="tel"
-                  placeholder="+2348012345678"
+                  placeholder="08012345678"
+                  minLength={11}
                   value={phoneNumber}
                   onChange={(event) => setPhoneNumber(event.target.value)}
                 />
@@ -101,14 +104,13 @@ const GetStarted = () => {
                 <input
                   type="password"
                   placeholder="**********"
+                  minLength={8}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </label>
 
-              {errorMessage && (
-                <p className="text-white">{errorMessage}</p>
-              )}
+              {errorMessage && <p className="text-white">{errorMessage}</p>}
 
               <p className="terms">
                 Already have an account?&nbsp;

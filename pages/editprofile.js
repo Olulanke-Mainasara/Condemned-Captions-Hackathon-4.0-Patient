@@ -8,11 +8,15 @@ import {
   Button,
   Modal,
   Upload,
+  message,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { states } from "@/data/arrays.js";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Image from "next/image";
+import { auth, db } from "@/firebase/client";
+import { doc, setDoc } from "firebase/firestore";
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -38,7 +42,13 @@ const Documents = () => {
       file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
     );
   };
+
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
+  const handleSave = () => {
+    message.success("Picture uploaded successfully!");
+  };
+
   const uploadButton = (
     <div>
       <PlusOutlined className="text-white" />
@@ -52,6 +62,7 @@ const Documents = () => {
       </div>
     </div>
   );
+
   return (
     <div className="">
       <div className="rounded-xl w-full p-4 mt-8 bg-[#2A9988] text-white gap-10 xl:gap-20 flex flex-row items-center justify-between">
@@ -66,58 +77,161 @@ const Documents = () => {
           {fileList.length >= 1 ? null : uploadButton}
         </Upload>
       </div>
+
       <br />
       <br />
       <br />
-      <Button size="large" className="w-full bg-[#2A9988] text-white">
+
+      <Button
+        onClick={handleSave}
+        size="large"
+        className="w-full bg-[#2A9988] text-white"
+      >
         Save
       </Button>
+
       <Modal
         open={previewOpen}
         title={previewTitle}
         footer={null}
         onCancel={handleCancel}
       >
-        <img
-          alt="example"
-          style={{
-            width: "100%",
-          }}
-          src={previewImage}
-        />
+        <Image alt="example" className="w-full" src={previewImage} />
       </Modal>
     </div>
   );
 };
 
 const Basic = () => {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [gender, setGender] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [age, setAge] = useState("");
+  const [location, setLocation] = useState([]);
+
+  const handleSave = async () => {
+    const user = auth.currentUser;
+    try {
+      if (user) {
+        const uid = user.uid;
+        const data = {
+          gender: gender,
+          age: age,
+          location: location.join(", "),
+        };
+
+        if (fname.trim() !== "") {
+          data.firstname = fname;
+        }
+
+        if (lname.trim() !== "") {
+          data.lastname = lname;
+        }
+
+        if (phoneNumber.trim() !== "") {
+          data.phoneno = phoneNumber;
+        }
+
+        const documentRef = doc(db, "users", uid);
+
+        await setDoc(documentRef, data, { merge: true });
+
+        message.success("Profile edited successfully!");
+      } else {
+        // user is not signed in' redirect to the login page
+        alert("Oops! You're not logged in.");
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleAgeChange = (e) => {
+    const inputAge = e.target.value;
+    if (/^\d+$/.test(inputAge) || inputAge === "") {
+      setAge(inputAge);
+    }
+  };
+
+  const handleNumberChange = (e) => {
+    const inputNumber = e.target.value;
+    if (/^\d+$/.test(inputNumber) || inputNumber === "") {
+      setPhoneNumber(inputNumber);
+    }
+  };
+
   return (
     <div className="w-full py-4 bg-white">
       <Form className="flex flex-col items-start justify-start w-full">
-        <Form.Item label="Change Name" className="w-full">
-          <Input className="w-full" />
+        <Form.Item label="Change first name" className="w-full">
+          <Input
+            className="w-full h-12"
+            value={fname}
+            onChange={(e) => setFname(e.target.value)}
+            minLength={3}
+          />
         </Form.Item>
+
+        <Form.Item label="Change last name" className="w-full">
+          <Input
+            className="w-full h-12"
+            value={lname}
+            onChange={(e) => setLname(e.target.value)}
+            minLength={3}
+          />
+        </Form.Item>
+
         <Form.Item label="Gender" className="w-full">
-          <Radio.Group>
+          <Radio.Group
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
             <Radio value="male"> Male </Radio>
             <Radio value="female"> Female </Radio>
           </Radio.Group>
         </Form.Item>
+
         <Form.Item label="Phone Number" className="w-full">
-          <Input className="w-full" />
-        </Form.Item>
-        <Form.Item label="Age" className="w-full">
-          <Input className="w-full" />
-        </Form.Item>
-        <Form.Item label="State / City" className="w-full">
-          <Cascader
-            options={options}
-            placeholder="Please select your state / city"
+          <Input
+            type="tel"
+            className="w-full h-12"
+            value={phoneNumber}
+            onChange={handleNumberChange}
+            minLength={13}
+            placeholder="08034360345"
           />
         </Form.Item>
+
+        <Form.Item label="Age" className="w-full">
+          <Input
+            type="number"
+            step={1}
+            className="w-full h-12"
+            value={age}
+            onChange={handleAgeChange}
+          />
+        </Form.Item>
+
+        <Form.Item label="State / City" className="w-full">
+          <Cascader
+            className="h-12"
+            options={options}
+            placeholder="Please select your state / city"
+            value={location}
+            onChange={(value) => setLocation(value)}
+          />
+        </Form.Item>
+
         <br />
+
         <Form.Item className="w-full">
-          <Button size="large" className="w-full bg-[#2A9988] text-white">
+          <Button
+            size="large"
+            className="w-full bg-[#2A9988] text-white"
+            onClick={handleSave}
+          >
             Save
           </Button>
         </Form.Item>
