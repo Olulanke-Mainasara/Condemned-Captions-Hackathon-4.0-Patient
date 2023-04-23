@@ -74,9 +74,15 @@ export default function NearbyHospitals() {
               className="w-[90%] h-fit shadow-lg max-w-[420px] mx-auto rounded-2xl bg-[#FCFCFC] flex items-center mb-10"
             >
               <div className="text-black flex flex-col justify-evenly p-[5%]">
-                <h5 className="text-lg">{splitDisplay[0]}</h5>
-                <p className="text-base opacity-70">
-                  {getAddress(splitDisplay)}
+                <h5 className="text-lg font-[600]">
+                  Name: <span className="font-normal">{splitDisplay[0]}</span>
+                </h5>
+                <hr className="my-2"/>
+                <p className="font-[600]">
+                  Address:{" "}
+                  <span className="font-normal">
+                    {getAddress(splitDisplay)}
+                  </span>
                 </p>
               </div>
             </div>

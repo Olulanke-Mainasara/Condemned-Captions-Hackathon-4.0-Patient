@@ -150,7 +150,7 @@ function Appointments() {
             </div>
 
             <div className="h-full">
-              <div className="relative h-full pt-10 pb-8 overflow-hidden scrollbar-hide">
+              <div className="h-full pt-10 pb-8 overflow-hidden scrollbar-hide">
                 <div
                   className={`w-full h-full ${
                     arrayUsed.length == 0
@@ -225,7 +225,7 @@ function Appointments() {
                     </>
                   )}
                   <Link
-                    className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] duration-500 text-white rounded-lg shadow-lg absolute bottom-12 right-0"
+                    className="flex items-center gap-2 px-4 py-3 bg-[#2a9988] hover:bg-[#1C665B] duration-500 text-white rounded-lg shadow-lg absolute bottom-20 right-5"
                     href={"/booking"}
                   >
                     <div className="relative w-5 h-5">

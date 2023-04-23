@@ -158,9 +158,9 @@ function Nav() {
         </ul>
 
         <div
-          className={`flex flex-col gap-6 px-6 items-start justify-center text-base absolute bottom-0 h-screen w-full bg-[#F8FFFE] dark:bg-black xl:hidden duration-500 ${navMenu}`}
+          className={`flex flex-col gap-6 px-6 items-start justify-center text-base absolute bottom-0 h-[100dvh] w-full bg-[#F8FFFE] dark:bg-black xl:hidden duration-500 ${navMenu}`}
         >
-          <div className="flex items-center justify-between w-full mt-24">
+          <div className="flex items-center justify-between w-full mt-8">
             <Link
               href={"/editprofile"}
               className="flex flex-row items-center gap-2 sm:px-16 px-5 text-sm py-2 text-white bg-[#2a9988] hover:bg-[#1C665B] rounded-lg xl:hidden"
