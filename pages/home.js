@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
@@ -8,15 +8,15 @@ import specialistsDummy from "/data/specialistsDummyData.json";
 import doctorsDummyData from "/data/doctorsDummyData.json";
 import Nav from "@/components/Nav";
 import { EditOutlined } from "@ant-design/icons";
+import { auth, db } from "@/firebase/client";
 import { useRouter } from "next/router";
-import useStore from "@/providers/appStore";
+import { doc, getDoc } from "firebase/firestore";
 
 const Home = () => {
   const [value, setValue] = useState(specialistsDummy.specialists);
   const [searchField, setSearchField] = useState("");
-  const { name } = useStore();
+  const [userName, setUserName] = useState("");
   const router = useRouter();
-  const firstName = router.query.firstName;
 
   const doctorsArray = doctorsDummyData.doctors;
 
@@ -41,6 +41,24 @@ const Home = () => {
     />
   );
 
+  const handleLoad = async () => {
+    const user = auth.currentUser;
+    const uid = user.uid;
+
+    const userDoc = await getDoc(doc(db, "users", uid));
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+
+      setUserName(userData.firstname);
+    } else {
+      setUserName("Stranger")
+    }
+  };
+
+  useEffect(() => {
+    handleLoad();
+  }, [router]);
+
   return (
     <>
       <Head>
@@ -54,9 +72,9 @@ const Home = () => {
           <div className="flex flex-row items-center justify-between w-full">
             <div>
               <h1 className="text-xl font-semibold dark:text-white sm:text-3xl">
-                Hi
+                Hi,{" "}
                 <span className="text-[#2A9988]">
-                  {firstName ? " " + firstName + name : name}
+                  {userName}
                 </span>
               </h1>
             </div>

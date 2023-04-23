@@ -25,16 +25,9 @@ const Login = () => {
 
       const userDoc = await getDoc(doc(db, "users", uid));
       if (userDoc.exists()) {
-        const userData = userDoc.data();
-
-        router.push({
-          pathname: "/home",
-          query: { firstName: userData.firstname },
-        });
+        router.push("/home");
       } else {
-        router.push({
-          pathname: "/sign-up",
-        });
+        router.push("/sign-up");
       }
     } catch (error) {
       setErrorMessage(error.message);
