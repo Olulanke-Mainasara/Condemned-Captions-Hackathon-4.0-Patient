@@ -137,9 +137,17 @@ const Basic = () => {
 
         await setDoc(documentRef, data, { merge: true });
 
+        // Reset all the states to their initial values
+        setFname("");
+        setLname("");
+        setGender("");
+        setPhoneNumber("");
+        setAge("");
+        setLocation([]);
+
         message.success("Profile edited successfully!");
       } else {
-        // user is not signed in' redirect to the login page
+        // user is not signed in, redirect to the login page
         alert("Oops! You're not logged in.");
         router.push("/login");
       }
