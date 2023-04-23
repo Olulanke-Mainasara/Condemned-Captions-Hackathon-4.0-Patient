@@ -109,7 +109,9 @@ const GetStarted = () => {
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </label>
+
               {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+              
               <p className="terms">
                 Already have an account?&nbsp;
                 <Link href={"/login"}>Login</Link>
